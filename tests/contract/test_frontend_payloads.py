@@ -10,8 +10,8 @@ from pathlib import Path
 
 import pytest
 
-from app.schemas.auth import CurrentUserResponse
-from app.schemas.public import (
+from app.modules.auth import CurrentUserResponse
+from app.modules.campaigns import (
     CampaignDetailResponse,
     CampaignListResponse,
     OrganisationProfileResponse,

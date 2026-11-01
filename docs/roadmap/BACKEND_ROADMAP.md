@@ -87,6 +87,13 @@ These apply to every item. A reviewer rejects any PR that breaks one of them.
 - **Tests:** example tests for each layer.
 - **Definition of Done:** the full suite runs in CI against PostgreSQL in under 5 minutes.
 
+### B0.6 Modular monolith structure (P0)
+
+- **Scope:** restructure the API into `app/core`, `app/db` and `app/modules/{auth, organisations, campaigns, donations, accountability, audit, admin}` as decided in ADR-015, keeping all 28 contract routes and `openapi.json` unchanged.
+- **Unblocks:** B1 onwards (each module adds its own `models.py` and `service.py`).
+- **Tests:** an architecture test fails on cross-module internal imports, import cycles and upward imports from `core` and `db`; the existing contract tests and the stale-`openapi.json` check keep passing.
+- **Definition of Done:** the full suite, Ruff and mypy pass, and `openapi.json` is byte-identical to before.
+
 **Phase B0 Definition of Done:** ADR-004 accepted (done), `/health` deployed to a staging URL, OpenAPI v0 published, and CI green.
 
 ---

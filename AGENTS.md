@@ -65,18 +65,23 @@ These come from spec §4 and §9 and the backend roadmap. A reviewer rejects any
 
 ```
 app/
-  main.py              create_app(): middleware, error handlers, routers, lifespan
-  api/                 Routers (one module per area; health.py today)
-  core/                config.py (settings), logging.py, request_id.py, errors.py
+  main.py              create_app(): middleware, error handlers, wires every module's routers
+  health.py            GET /health
+  core/                config, logging, request_id, errors and error_codes, security (session
+                       cookie scheme), schemas (shared contract types), stubs (contract helpers)
   db/                  base.py (declarative base), session.py (engine, session dependency)
+  modules/<name>/      auth, organisations, campaigns, donations, accountability, audit, admin.
+                       Each has __init__.py (public interface), router.py, schemas.py, models.py,
+                       service.py
 migrations/            Alembic (env.py is async; versions/ holds the revisions)
-tests/                 unit/, integration/ (real PostgreSQL); conftest.py has the fixtures
+tests/                 unit/, integration/ (real PostgreSQL), contract/, architecture/ (module
+                       boundaries), modules/<name>/ (module tests); conftest.py has the fixtures
 scripts/               Helper scripts (test database init; seed data and OpenAPI export later)
 docs/                  Spec, roadmap, decisions, architecture
 .claude/               Skills and commands for Claude
 ```
 
-Add new areas as `app/api/<area>.py` routers with their services and models beside them. Models must be imported in `migrations/env.py` so Alembic sees them.
+Work happens inside a module (ADR-015). A module imports another only through `app.modules.<name>` (its `__init__.py`), never its `router`, `schemas`, `models` or `service`, and never touches another module's tables; `tests/architecture/` fails the build otherwise. Put module tests in `tests/modules/<name>/`. Models must be imported in `migrations/env.py` so Alembic sees them.
 
 ## 8. Commands
 

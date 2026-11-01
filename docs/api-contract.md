@@ -1,6 +1,6 @@
 # API contract
 
-The contract is the OpenAPI document generated from the Pydantic models in `app/schemas/`. The committed copy is [`openapi.json`](../openapi.json); the running service serves it at `/api/openapi.json` and the interactive docs at `/api/docs`.
+The contract is the OpenAPI document generated from the Pydantic models in each module's `schemas.py` (`app/modules/<module>/schemas.py`). The committed copy is [`openapi.json`](../openapi.json); the running service serves it at `/api/openapi.json` and the interactive docs at `/api/docs`.
 
 Every route in the spec (section 8) already exists as a **stub** that answers `501 NOT_IMPLEMENTED`. Each carries `x-roadmap` (the item that builds it) and `x-implemented: false`. When an item ships, replace the stub, set `x-implemented` to `true` (drop the `stub(...)` call) and regenerate.
 

@@ -12,6 +12,10 @@ How the Amanah API fits with the rest of the system. Decisions behind it are in 
 | Files | MinIO (S3 API) | Railway service with a volume (ADR-013) |
 | Payments | Paystack, test mode | external |
 
+## Code structure (ADR-015)
+
+A modular monolith: one deployable API and one database, split into modules under `app/modules/` (`auth`, `organisations`, `campaigns`, `donations`, `accountability`, `audit`, `admin`). Each module owns its router, schemas, models and service, and exposes a small public interface in its `__init__.py`. Modules call each other only through that interface and never touch another module's tables. `app/core` (config, logging, errors, security, shared contract types) and `app/db` (engine, session, base) sit below the modules, and `app/main.py` wires the module routers. `tests/architecture/test_module_boundaries.py` fails the build on a violation.
+
 ## Contract between frontend and backend
 
 - JSON over HTTPS. Paths follow spec §8 (`/api/campaigns`, `/api/campaigns/:id/checkout`, `/api/webhooks/payments`, …).

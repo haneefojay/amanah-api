@@ -8,7 +8,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from app.api.support import NotImplementedYet
+from app.core.stubs import NotImplementedYet
 
 log = structlog.get_logger()
 

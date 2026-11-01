@@ -9,13 +9,17 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 
-from app.api import admin, auth, health, org, public, witness
 from app.core.config import Settings, get_settings
 from app.core.error_codes import CATALOGUE
 from app.core.errors import register_error_handlers
 from app.core.logging import configure_logging
 from app.core.request_id import RequestIdMiddleware
 from app.db.session import create_engine, create_session_factory
+from app.health import router as health_router
+from app.modules import accountability, admin, audit, auth, campaigns, donations, organisations
+
+# Every module is wired here and nowhere else; modules never import each other's internals.
+MODULES = (auth, organisations, campaigns, donations, accountability, audit, admin)
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -52,9 +56,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     # Added last, so it is the outermost layer and the request ID reaches everything else.
     app.add_middleware(RequestIdMiddleware)
     register_error_handlers(app)
-    app.include_router(health.router)
-    for module in (public, auth, org, witness, admin):
-        app.include_router(module.router)
+    app.include_router(health_router)
+    for module in MODULES:
+        for router in module.routers:
+            app.include_router(router)
     app.openapi = lambda: build_openapi(app)  # type: ignore[method-assign]
     return app
 
