@@ -45,7 +45,7 @@ Hosting candidates (decide alongside): Render, Railway, Fly.io, or a VPS, with m
 
 ## Decision
 
-**Option B: Python with FastAPI on PostgreSQL, in its own repository** (separate from this frontend repository). Decided by the project owner on 2026-11-01. A monorepo (npm workspaces with a shared contract package) was considered and rejected because the backend is not TypeScript; the two repositories meet only at the OpenAPI contract.
+**Option B: Python with FastAPI on PostgreSQL, in its own repository** (separate from the frontend repository, `haneefojay/amanah`). Decided by the project owner on 2026-11-01. A monorepo (npm workspaces with a shared contract package) was considered and rejected because the backend is not TypeScript; the two repositories meet only at the OpenAPI contract.
 
 Working choices that follow from it (refined in B0.2 to B0.5; change them with a new ADR if the team disagrees):
 
@@ -60,7 +60,7 @@ Working choices that follow from it (refined in B0.2 to B0.5; change them with a
 
 - FastAPI generates an OpenAPI 3.1 document from the code, which is the contract the frontend depends on (ADR-003, B0.3). Pydantic gives strict request and response validation.
 - `select_for_update()` is first class, so the cap (spec 4.2) is enforced in the database transaction.
-- A separate repository keeps each toolchain simple (npm here, `uv` there), lets each deploy independently (Vercel for the frontend) and avoids forcing Python into an npm workspace.
+- A separate repository keeps each toolchain simple (npm in the frontend, `uv` here), lets each deploy independently (Vercel for the frontend) and avoids forcing Python into an npm workspace.
 
 ## Consequences
 
