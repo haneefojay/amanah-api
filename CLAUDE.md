@@ -22,7 +22,7 @@ Amanah is a transparent Islamic donation platform (general donations only, never
 - **Hosting (ADR-012):** Railway for the API and PostgreSQL to start, a VPS later. Ship a Dockerfile and read all config from environment variables. These choices can change; keep the code portable.
 - **Files (ADR-013):** MinIO behind an S3-compatible adapter. Private bucket for verification documents, public bucket for receipts and evidence.
 - **Payments:** Paystack in test mode (D3). The webhook is verified twice (signature, then the provider's verify endpoint).
-- The repository currently holds documentation only. The next item is **B0.2** (service skeleton).
+- The service skeleton exists (B0.2, B0.4, B0.5 in review): `app/main.py` factory, `/health`, error envelope, request ID, Alembic baseline, pytest harness with rollback isolation. Next: B0.3 (OpenAPI export) and B1 (data model, audit log).
 
 ## Conventions to remember
 
@@ -33,7 +33,7 @@ Amanah is a transparent Islamic donation platform (general donations only, never
 - Status copy and cap error codes (`AMOUNT_EXCEEDS_AVAILABLE`, `TARGET_REACHED`, `CAMPAIGN_NOT_ACCEPTING`, `WITNESS_CONFLICT`) must match the spec exactly, because the frontend depends on them.
 - Roadmap IDs: `B<phase>.<n>` here and `F<phase>.<n>` in the frontend repo. ADRs are `ADR-NNN` and the numbering is shared across both repositories (frontend ADR-001 to ADR-010; backend ADR-003, ADR-004, ADR-011 onwards). Never renumber.
 - British spelling in docs. Nigerian context: ₦, Africa/Lagos time zone.
-- Tests sit in `tests/`. Integration tests run against a **real PostgreSQL**, never SQLite or mocks.
+- Tests sit in `tests/` (`unit/`, `integration/`); `tests/conftest.py` provides `client` and `db_session` (rolled back per test). Integration tests run against a **real PostgreSQL**, never SQLite or mocks.
 
 ## Environment notes
 
@@ -54,4 +54,4 @@ Amanah is a transparent Islamic donation platform (general donations only, never
 
 - Spec decisions D8, D9 and D11; the convention date; the pilot organisation.
 - Cross-origin cookie arrangement (shared parent domain or a frontend proxy) before staging (ADR-011).
-- Connect Railway and set up staging (B12.4) when B0.2 produces a deployable skeleton.
+- Connect Railway and set up staging (B12.4); the Dockerfile exists but has not been built in CI yet.
