@@ -8,6 +8,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+from app.api.support import NotImplementedYet
+
 log = structlog.get_logger()
 
 
@@ -37,6 +39,10 @@ def register_error_handlers(app: FastAPI) -> None:
         where = ".".join(str(part) for part in first.get("loc", ()))
         message = f"{where}: {first.get('msg', 'Invalid request')}" if where else "Invalid request"
         return JSONResponse(error_body("VALIDATION_ERROR", message), status_code=422)
+
+    @app.exception_handler(NotImplementedYet)
+    async def not_implemented(_: Request, exc: NotImplementedYet) -> JSONResponse:
+        return JSONResponse(error_body("NOT_IMPLEMENTED", str(exc)), status_code=501)
 
     @app.exception_handler(Exception)
     async def unhandled_error(_: Request, exc: Exception) -> JSONResponse:

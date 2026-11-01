@@ -1,0 +1,4801 @@
+{
+  "components": {
+    "schemas": {
+      "AdminCampaign": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "organisationName": {
+            "minLength": 1,
+            "title": "Organisationname",
+            "type": "string"
+          },
+          "slug": {
+            "minLength": 1,
+            "title": "Slug",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CampaignStatus"
+          },
+          "submittedAt": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submittedat"
+          },
+          "targetAmount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Targetamount",
+            "type": "integer"
+          },
+          "title": {
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "organisationName",
+          "status",
+          "targetAmount",
+          "submittedAt"
+        ],
+        "title": "AdminCampaign",
+        "type": "object"
+      },
+      "AdminCampaignListResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/AdminCampaign"
+            },
+            "title": "Data",
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "AdminCampaignListResponse",
+        "type": "object"
+      },
+      "AdminOrganisation": {
+        "additionalProperties": false,
+        "properties": {
+          "city": {
+            "minLength": 1,
+            "title": "City",
+            "type": "string"
+          },
+          "documentUrls": {
+            "description": "Signed, short-lived URLs (ADR-013).",
+            "items": {
+              "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+              "minLength": 1,
+              "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+              "type": "string"
+            },
+            "title": "Documenturls",
+            "type": "array"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "state": {
+            "minLength": 1,
+            "title": "State",
+            "type": "string"
+          },
+          "submittedAt": {
+            "format": "date-time",
+            "title": "Submittedat",
+            "type": "string"
+          },
+          "verificationNotes": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verificationnotes"
+          },
+          "verificationStatus": {
+            "$ref": "#/components/schemas/VerificationStatus"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "city",
+          "state",
+          "verificationStatus",
+          "verificationNotes",
+          "submittedAt",
+          "documentUrls"
+        ],
+        "title": "AdminOrganisation",
+        "type": "object"
+      },
+      "AdminOrganisationListResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/AdminOrganisation"
+            },
+            "title": "Data",
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "AdminOrganisationListResponse",
+        "type": "object"
+      },
+      "ApiError": {
+        "additionalProperties": false,
+        "description": "The standard error envelope used by every non-2xx response.",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ApiErrorDetail"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "ApiError",
+        "type": "object"
+      },
+      "ApiErrorDetail": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "description": "SCREAMING_SNAKE code. See info.x-error-codes.",
+            "title": "Code",
+            "type": "string"
+          },
+          "details": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Extra machine-readable data, for example availableAmount on AMOUNT_EXCEEDS_AVAILABLE.",
+            "title": "Details"
+          },
+          "message": {
+            "description": "A message safe to show to a person.",
+            "title": "Message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ApiErrorDetail",
+        "type": "object"
+      },
+      "AuditEntry": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "minLength": 1,
+            "title": "Action",
+            "type": "string"
+          },
+          "actorId": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actorid"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "title": "Createdat",
+            "type": "string"
+          },
+          "entityId": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Entityid"
+          },
+          "entityType": {
+            "minLength": 1,
+            "title": "Entitytype",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "title": "Payload",
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "actorId",
+          "action",
+          "entityType",
+          "entityId",
+          "payload",
+          "createdAt"
+        ],
+        "title": "AuditEntry",
+        "type": "object"
+      },
+      "AuditLogResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/AuditEntry"
+            },
+            "title": "Data",
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "AuditLogResponse",
+        "type": "object"
+      },
+      "CampaignCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "coverImageUrl": {
+            "anyOf": [
+              {
+                "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+                "minLength": 1,
+                "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coverimageurl"
+          },
+          "description": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "title": "Description",
+            "type": "array"
+          },
+          "endsAt": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Endsat"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ItemInput"
+            },
+            "minItems": 1,
+            "title": "Items",
+            "type": "array"
+          },
+          "purpose": {
+            "minLength": 1,
+            "title": "Purpose",
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 140,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "purpose",
+          "description",
+          "items"
+        ],
+        "title": "CampaignCreate",
+        "type": "object"
+      },
+      "CampaignDetail": {
+        "additionalProperties": false,
+        "description": "GET /api/campaigns/{slug} (B5.2). Spent is never sent: it is the sum of the expenses.",
+        "properties": {
+          "availableAmount": {
+            "description": "target - raised - active reservations (spec 4.2). The only figure that decides whether a donation can be offered.",
+            "minimum": 0.0,
+            "title": "Availableamount",
+            "type": "integer"
+          },
+          "city": {
+            "minLength": 1,
+            "title": "City",
+            "type": "string"
+          },
+          "coverImageUrl": {
+            "anyOf": [
+              {
+                "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+                "minLength": 1,
+                "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coverimageurl"
+          },
+          "description": {
+            "description": "Paragraphs of text.",
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "title": "Description",
+            "type": "array"
+          },
+          "endsAt": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Endsat"
+          },
+          "evidence": {
+            "description": "Newest first, by upload time.",
+            "items": {
+              "$ref": "#/components/schemas/EvidencePhoto"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "expenses": {
+            "description": "Newest first.",
+            "items": {
+              "$ref": "#/components/schemas/Expense"
+            },
+            "title": "Expenses",
+            "type": "array"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CampaignItem"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "organisation": {
+            "$ref": "#/components/schemas/OrganisationSummary"
+          },
+          "organisationId": {
+            "format": "uuid",
+            "title": "Organisationid",
+            "type": "string"
+          },
+          "organisationName": {
+            "minLength": 1,
+            "title": "Organisationname",
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "title": "Publishedat",
+            "type": "string"
+          },
+          "purpose": {
+            "minLength": 1,
+            "title": "Purpose",
+            "type": "string"
+          },
+          "raisedAmount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Raisedamount",
+            "type": "integer"
+          },
+          "slug": {
+            "minLength": 1,
+            "title": "Slug",
+            "type": "string"
+          },
+          "state": {
+            "minLength": 1,
+            "title": "State",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CampaignStatus"
+          },
+          "targetAmount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Targetamount",
+            "type": "integer"
+          },
+          "title": {
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "updates": {
+            "description": "Newest first.",
+            "items": {
+              "$ref": "#/components/schemas/CampaignUpdate"
+            },
+            "title": "Updates",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "organisationId",
+          "organisationName",
+          "city",
+          "state",
+          "coverImageUrl",
+          "status",
+          "targetAmount",
+          "raisedAmount",
+          "availableAmount",
+          "purpose",
+          "description",
+          "publishedAt",
+          "endsAt",
+          "items",
+          "organisation",
+          "expenses",
+          "evidence",
+          "updates"
+        ],
+        "title": "CampaignDetail",
+        "type": "object"
+      },
+      "CampaignDetailResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CampaignDetail"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "CampaignDetailResponse",
+        "type": "object"
+      },
+      "CampaignEdit": {
+        "additionalProperties": false,
+        "description": "Every field is optional. The target and items are locked after the first donation.",
+        "properties": {
+          "coverImageUrl": {
+            "anyOf": [
+              {
+                "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+                "minLength": 1,
+                "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coverimageurl"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "endsAt": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Endsat"
+          },
+          "items": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ItemInput"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Items"
+          },
+          "purpose": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Purpose"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "maxLength": 140,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          }
+        },
+        "title": "CampaignEdit",
+        "type": "object"
+      },
+      "CampaignFilters": {
+        "additionalProperties": false,
+        "properties": {
+          "cities": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Cities",
+            "type": "array"
+          },
+          "organisations": {
+            "items": {
+              "$ref": "#/components/schemas/IdName"
+            },
+            "title": "Organisations",
+            "type": "array"
+          }
+        },
+        "required": [
+          "cities",
+          "organisations"
+        ],
+        "title": "CampaignFilters",
+        "type": "object"
+      },
+      "CampaignItem": {
+        "additionalProperties": false,
+        "description": "One thing the campaign buys. Items add up to the campaign target (spec 4.1).",
+        "properties": {
+          "confirmation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WitnessConfirmation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "quantity": {
+            "exclusiveMinimum": 0.0,
+            "title": "Quantity",
+            "type": "integer"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ItemDisplayStatus"
+          },
+          "totalCost": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Totalcost",
+            "type": "integer"
+          },
+          "unitCost": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Unitcost",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "quantity",
+          "unitCost",
+          "totalCost",
+          "status",
+          "confirmation"
+        ],
+        "title": "CampaignItem",
+        "type": "object"
+      },
+      "CampaignListResponse": {
+        "additionalProperties": false,
+        "description": "GET /api/campaigns (B5.1): a page of public campaigns plus the values filters can offer.",
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/CampaignSummary"
+            },
+            "title": "Data",
+            "type": "array"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/CampaignFilters"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PageMeta"
+          }
+        },
+        "required": [
+          "data",
+          "meta",
+          "filters"
+        ],
+        "title": "CampaignListResponse",
+        "type": "object"
+      },
+      "CampaignReview": {
+        "additionalProperties": false,
+        "properties": {
+          "decision": {
+            "$ref": "#/components/schemas/ReviewDecision"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          }
+        },
+        "required": [
+          "decision"
+        ],
+        "title": "CampaignReview",
+        "type": "object"
+      },
+      "CampaignStatus": {
+        "enum": [
+          "DRAFT",
+          "PENDING_REVIEW",
+          "REJECTED",
+          "LIVE",
+          "FUNDED",
+          "CLOSED",
+          "COMPLETED"
+        ],
+        "title": "CampaignStatus",
+        "type": "string"
+      },
+      "CampaignSummary": {
+        "additionalProperties": false,
+        "properties": {
+          "availableAmount": {
+            "description": "target - raised - active reservations (spec 4.2). The only figure that decides whether a donation can be offered.",
+            "minimum": 0.0,
+            "title": "Availableamount",
+            "type": "integer"
+          },
+          "city": {
+            "minLength": 1,
+            "title": "City",
+            "type": "string"
+          },
+          "coverImageUrl": {
+            "anyOf": [
+              {
+                "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+                "minLength": 1,
+                "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coverimageurl"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "organisationId": {
+            "format": "uuid",
+            "title": "Organisationid",
+            "type": "string"
+          },
+          "organisationName": {
+            "minLength": 1,
+            "title": "Organisationname",
+            "type": "string"
+          },
+          "raisedAmount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Raisedamount",
+            "type": "integer"
+          },
+          "slug": {
+            "minLength": 1,
+            "title": "Slug",
+            "type": "string"
+          },
+          "state": {
+            "minLength": 1,
+            "title": "State",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CampaignStatus"
+          },
+          "targetAmount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Targetamount",
+            "type": "integer"
+          },
+          "title": {
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "organisationId",
+          "organisationName",
+          "city",
+          "state",
+          "coverImageUrl",
+          "status",
+          "targetAmount",
+          "raisedAmount",
+          "availableAmount"
+        ],
+        "title": "CampaignSummary",
+        "type": "object"
+      },
+      "CampaignUpdate": {
+        "additionalProperties": false,
+        "properties": {
+          "body": {
+            "minLength": 1,
+            "title": "Body",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "images": {
+            "items": {
+              "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+              "minLength": 1,
+              "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+              "type": "string"
+            },
+            "title": "Images",
+            "type": "array"
+          },
+          "postedAt": {
+            "format": "date-time",
+            "title": "Postedat",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "body",
+          "images",
+          "postedAt"
+        ],
+        "title": "CampaignUpdate",
+        "type": "object"
+      },
+      "Checkout": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Amount",
+            "type": "integer"
+          },
+          "authorizationUrl": {
+            "description": "The provider's hosted checkout page.",
+            "title": "Authorizationurl",
+            "type": "string"
+          },
+          "expiresAt": {
+            "description": "When the reservation is released if unpaid.",
+            "format": "date-time",
+            "title": "Expiresat",
+            "type": "string"
+          },
+          "reference": {
+            "description": "The reservation ID. It doubles as the payment reference.",
+            "format": "uuid",
+            "title": "Reference",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reference",
+          "authorizationUrl",
+          "amount",
+          "expiresAt"
+        ],
+        "title": "Checkout",
+        "type": "object"
+      },
+      "CheckoutRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "description": "Amount in kobo (integer), above zero.",
+            "exclusiveMinimum": 0.0,
+            "title": "Amount",
+            "type": "integer"
+          },
+          "donorEmail": {
+            "description": "Email address.",
+            "maxLength": 254,
+            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "title": "Donoremail",
+            "type": "string"
+          },
+          "donorName": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Donorname",
+            "type": "string"
+          },
+          "donorPhone": {
+            "description": "Phone number, for example +2348012345678.",
+            "maxLength": 20,
+            "minLength": 7,
+            "pattern": "^\\+?[0-9 ()-]+$",
+            "title": "Donorphone",
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "donorName",
+          "donorEmail",
+          "donorPhone"
+        ],
+        "title": "CheckoutRequest",
+        "type": "object"
+      },
+      "CheckoutResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Checkout"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "CheckoutResponse",
+        "type": "object"
+      },
+      "CurrentUser": {
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "description": "Email address.",
+            "maxLength": 254,
+            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "title": "Email",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "organisations": {
+            "items": {
+              "$ref": "#/components/schemas/IdName"
+            },
+            "title": "Organisations",
+            "type": "array"
+          },
+          "role": {
+            "$ref": "#/components/schemas/UserRole"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email",
+          "role",
+          "organisations"
+        ],
+        "title": "CurrentUser",
+        "type": "object"
+      },
+      "CurrentUserResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CurrentUser"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "CurrentUserResponse",
+        "type": "object"
+      },
+      "DonationState": {
+        "enum": [
+          "PENDING",
+          "CONFIRMED",
+          "FAILED",
+          "EXPIRED"
+        ],
+        "title": "DonationState",
+        "type": "string"
+      },
+      "DonationStatus": {
+        "additionalProperties": false,
+        "description": "Shown on the result page. It never includes the donor's email or phone.",
+        "properties": {
+          "amount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Amount",
+            "type": "integer"
+          },
+          "campaignSlug": {
+            "minLength": 1,
+            "title": "Campaignslug",
+            "type": "string"
+          },
+          "campaignTitle": {
+            "minLength": 1,
+            "title": "Campaigntitle",
+            "type": "string"
+          },
+          "donorName": {
+            "minLength": 1,
+            "title": "Donorname",
+            "type": "string"
+          },
+          "paidAt": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Paidat"
+          },
+          "reference": {
+            "format": "uuid",
+            "title": "Reference",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DonationState"
+          }
+        },
+        "required": [
+          "reference",
+          "status",
+          "amount",
+          "campaignSlug",
+          "campaignTitle",
+          "donorName",
+          "paidAt"
+        ],
+        "title": "DonationStatus",
+        "type": "object"
+      },
+      "DonationStatusResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DonationStatus"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "DonationStatusResponse",
+        "type": "object"
+      },
+      "EvidenceCreated": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "imageUrl": {
+            "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+            "minLength": 1,
+            "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+            "title": "Imageurl",
+            "type": "string"
+          },
+          "thumbnailUrl": {
+            "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+            "minLength": 1,
+            "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+            "title": "Thumbnailurl",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/EvidenceType"
+          },
+          "uploadedAtServer": {
+            "format": "date-time",
+            "title": "Uploadedatserver",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "imageUrl",
+          "thumbnailUrl",
+          "uploadedAtServer"
+        ],
+        "title": "EvidenceCreated",
+        "type": "object"
+      },
+      "EvidenceCreatedResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/EvidenceCreated"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "EvidenceCreatedResponse",
+        "type": "object"
+      },
+      "EvidencePhoto": {
+        "additionalProperties": false,
+        "properties": {
+          "capturedAtClient": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "What the phone said. Secondary to uploadedAtServer.",
+            "title": "Capturedatclient"
+          },
+          "expenseId": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expenseid"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "imageUrl": {
+            "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+            "minLength": 1,
+            "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+            "title": "Imageurl",
+            "type": "string"
+          },
+          "itemId": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Itemid"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "maximum": 90.0,
+                "minimum": -90.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "maximum": 180.0,
+                "minimum": -180.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          },
+          "thumbnailUrl": {
+            "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+            "minLength": 1,
+            "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+            "title": "Thumbnailurl",
+            "type": "string"
+          },
+          "uploadedAtServer": {
+            "format": "date-time",
+            "title": "Uploadedatserver",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "imageUrl",
+          "thumbnailUrl",
+          "itemId",
+          "expenseId",
+          "latitude",
+          "longitude",
+          "capturedAtClient",
+          "uploadedAtServer"
+        ],
+        "title": "EvidencePhoto",
+        "type": "object"
+      },
+      "EvidenceType": {
+        "enum": [
+          "RECEIPT",
+          "PHOTO"
+        ],
+        "title": "EvidenceType",
+        "type": "string"
+      },
+      "ExcessListResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/ExcessRecord"
+            },
+            "title": "Data",
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "ExcessListResponse",
+        "type": "object"
+      },
+      "ExcessRecord": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "description": "Amount in kobo (integer), above zero.",
+            "exclusiveMinimum": 0.0,
+            "title": "Amount",
+            "type": "integer"
+          },
+          "campaignTitle": {
+            "minLength": 1,
+            "title": "Campaigntitle",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "title": "Createdat",
+            "type": "string"
+          },
+          "donationId": {
+            "format": "uuid",
+            "title": "Donationid",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ExcessStatus"
+          }
+        },
+        "required": [
+          "id",
+          "donationId",
+          "campaignTitle",
+          "amount",
+          "status",
+          "notes",
+          "createdAt"
+        ],
+        "title": "ExcessRecord",
+        "type": "object"
+      },
+      "ExcessResolution": {
+        "additionalProperties": false,
+        "properties": {
+          "notes": {
+            "minLength": 1,
+            "title": "Notes",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ExcessStatus",
+            "description": "RETURNED or SENT_TO_BAYT_AL_MAL. Not PENDING_RETURN."
+          }
+        },
+        "required": [
+          "status",
+          "notes"
+        ],
+        "title": "ExcessResolution",
+        "type": "object"
+      },
+      "ExcessResolutionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ExcessRecord"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "ExcessResolutionResponse",
+        "type": "object"
+      },
+      "ExcessStatus": {
+        "enum": [
+          "PENDING_RETURN",
+          "RETURNED",
+          "SENT_TO_BAYT_AL_MAL"
+        ],
+        "title": "ExcessStatus",
+        "type": "string"
+      },
+      "Expense": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Amount",
+            "type": "integer"
+          },
+          "description": {
+            "minLength": 1,
+            "title": "Description",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "itemId": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The item it paid for; null for a general cost.",
+            "title": "Itemid"
+          },
+          "receipt": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Receipt"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "spentAt": {
+            "format": "date-time",
+            "title": "Spentat",
+            "type": "string"
+          },
+          "vendorName": {
+            "minLength": 1,
+            "title": "Vendorname",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "vendorName",
+          "amount",
+          "spentAt",
+          "itemId",
+          "receipt"
+        ],
+        "title": "Expense",
+        "type": "object"
+      },
+      "ExpenseCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "description": "Amount in kobo (integer), above zero.",
+            "exclusiveMinimum": 0.0,
+            "title": "Amount",
+            "type": "integer"
+          },
+          "description": {
+            "minLength": 1,
+            "title": "Description",
+            "type": "string"
+          },
+          "itemId": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Itemid"
+          },
+          "receiptEvidenceId": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "An evidence upload of type RECEIPT.",
+            "title": "Receiptevidenceid"
+          },
+          "spentAt": {
+            "format": "date-time",
+            "title": "Spentat",
+            "type": "string"
+          },
+          "vendorName": {
+            "minLength": 1,
+            "title": "Vendorname",
+            "type": "string"
+          }
+        },
+        "required": [
+          "description",
+          "vendorName",
+          "amount",
+          "spentAt"
+        ],
+        "title": "ExpenseCreate",
+        "type": "object"
+      },
+      "ExpenseResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Expense"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "ExpenseResponse",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "IdName": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "IdName",
+        "type": "object"
+      },
+      "ItemDisplayStatus": {
+        "enum": [
+          "NEEDED",
+          "PURCHASED",
+          "DELIVERED",
+          "DISPUTED"
+        ],
+        "title": "ItemDisplayStatus",
+        "type": "string"
+      },
+      "ItemInput": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "quantity": {
+            "exclusiveMinimum": 0.0,
+            "title": "Quantity",
+            "type": "integer"
+          },
+          "unitCost": {
+            "description": "Amount in kobo (integer), above zero.",
+            "exclusiveMinimum": 0.0,
+            "title": "Unitcost",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "quantity",
+          "unitCost"
+        ],
+        "title": "ItemInput",
+        "type": "object"
+      },
+      "LoginRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "description": "Email address.",
+            "maxLength": 254,
+            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Password",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "title": "LoginRequest",
+        "type": "object"
+      },
+      "OrgCampaign": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "raisedAmount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Raisedamount",
+            "type": "integer"
+          },
+          "reviewNote": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Why an admin rejected it, if they did.",
+            "title": "Reviewnote"
+          },
+          "slug": {
+            "minLength": 1,
+            "title": "Slug",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CampaignStatus"
+          },
+          "targetAmount": {
+            "description": "Amount in kobo (integer). 100 kobo = 1 naira.",
+            "minimum": 0.0,
+            "title": "Targetamount",
+            "type": "integer"
+          },
+          "title": {
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "title": "Updatedat",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "status",
+          "targetAmount",
+          "raisedAmount",
+          "reviewNote",
+          "updatedAt"
+        ],
+        "title": "OrgCampaign",
+        "type": "object"
+      },
+      "OrgCampaignListResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/OrgCampaign"
+            },
+            "title": "Data",
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "OrgCampaignListResponse",
+        "type": "object"
+      },
+      "OrgCampaignResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/OrgCampaign"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "OrgCampaignResponse",
+        "type": "object"
+      },
+      "OrganisationProfile": {
+        "additionalProperties": false,
+        "description": "GET /api/organisations/{id} (B3.4). Type and registration number are never public.",
+        "properties": {
+          "address": {
+            "minLength": 1,
+            "title": "Address",
+            "type": "string"
+          },
+          "campaignCount": {
+            "description": "Public campaigns.",
+            "minimum": 0.0,
+            "title": "Campaigncount",
+            "type": "integer"
+          },
+          "campaigns": {
+            "items": {
+              "$ref": "#/components/schemas/CampaignSummary"
+            },
+            "title": "Campaigns",
+            "type": "array"
+          },
+          "city": {
+            "minLength": 1,
+            "title": "City",
+            "type": "string"
+          },
+          "completedCount": {
+            "minimum": 0.0,
+            "title": "Completedcount",
+            "type": "integer"
+          },
+          "coverImageUrl": {
+            "anyOf": [
+              {
+                "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+                "minLength": 1,
+                "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coverimageurl"
+          },
+          "endedCount": {
+            "description": "Closed or completed campaigns.",
+            "minimum": 0.0,
+            "title": "Endedcount",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "raisedAmount": {
+            "description": "Total raised across its public campaigns.",
+            "minimum": 0.0,
+            "title": "Raisedamount",
+            "type": "integer"
+          },
+          "state": {
+            "minLength": 1,
+            "title": "State",
+            "type": "string"
+          },
+          "verifiedAt": {
+            "description": "Only verified organisations are public.",
+            "format": "date-time",
+            "title": "Verifiedat",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "city",
+          "state",
+          "verifiedAt",
+          "campaignCount",
+          "endedCount",
+          "completedCount",
+          "address",
+          "coverImageUrl",
+          "raisedAmount",
+          "campaigns"
+        ],
+        "title": "OrganisationProfile",
+        "type": "object"
+      },
+      "OrganisationProfileResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/OrganisationProfile"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "OrganisationProfileResponse",
+        "type": "object"
+      },
+      "OrganisationRegistered": {
+        "additionalProperties": false,
+        "properties": {
+          "organisationId": {
+            "format": "uuid",
+            "title": "Organisationid",
+            "type": "string"
+          },
+          "verificationStatus": {
+            "$ref": "#/components/schemas/VerificationStatus"
+          }
+        },
+        "required": [
+          "organisationId",
+          "verificationStatus"
+        ],
+        "title": "OrganisationRegistered",
+        "type": "object"
+      },
+      "OrganisationRegisteredResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/OrganisationRegistered"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "OrganisationRegisteredResponse",
+        "type": "object"
+      },
+      "OrganisationRegistration": {
+        "additionalProperties": false,
+        "properties": {
+          "address": {
+            "minLength": 1,
+            "title": "Address",
+            "type": "string"
+          },
+          "adminEmail": {
+            "description": "Email address.",
+            "maxLength": 254,
+            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "title": "Adminemail",
+            "type": "string"
+          },
+          "adminName": {
+            "minLength": 1,
+            "title": "Adminname",
+            "type": "string"
+          },
+          "adminPhone": {
+            "description": "Phone number, for example +2348012345678.",
+            "maxLength": 20,
+            "minLength": 7,
+            "pattern": "^\\+?[0-9 ()-]+$",
+            "title": "Adminphone",
+            "type": "string"
+          },
+          "city": {
+            "minLength": 1,
+            "title": "City",
+            "type": "string"
+          },
+          "contactPerson": {
+            "minLength": 1,
+            "title": "Contactperson",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 256,
+            "minLength": 10,
+            "title": "Password",
+            "type": "string"
+          },
+          "registrationNumber": {
+            "minLength": 1,
+            "title": "Registrationnumber",
+            "type": "string"
+          },
+          "state": {
+            "minLength": 1,
+            "title": "State",
+            "type": "string"
+          },
+          "type": {
+            "description": "For example mosque, orphanage or society.",
+            "minLength": 1,
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "address",
+          "city",
+          "state",
+          "registrationNumber",
+          "contactPerson",
+          "adminName",
+          "adminEmail",
+          "adminPhone",
+          "password"
+        ],
+        "title": "OrganisationRegistration",
+        "type": "object"
+      },
+      "OrganisationSummary": {
+        "additionalProperties": false,
+        "properties": {
+          "campaignCount": {
+            "description": "Public campaigns.",
+            "minimum": 0.0,
+            "title": "Campaigncount",
+            "type": "integer"
+          },
+          "city": {
+            "minLength": 1,
+            "title": "City",
+            "type": "string"
+          },
+          "completedCount": {
+            "minimum": 0.0,
+            "title": "Completedcount",
+            "type": "integer"
+          },
+          "endedCount": {
+            "description": "Closed or completed campaigns.",
+            "minimum": 0.0,
+            "title": "Endedcount",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "state": {
+            "minLength": 1,
+            "title": "State",
+            "type": "string"
+          },
+          "verifiedAt": {
+            "description": "Only verified organisations are public.",
+            "format": "date-time",
+            "title": "Verifiedat",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "city",
+          "state",
+          "verifiedAt",
+          "campaignCount",
+          "endedCount",
+          "completedCount"
+        ],
+        "title": "OrganisationSummary",
+        "type": "object"
+      },
+      "OrganisationVerification": {
+        "additionalProperties": false,
+        "properties": {
+          "decision": {
+            "$ref": "#/components/schemas/VerifyDecision"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          }
+        },
+        "required": [
+          "decision"
+        ],
+        "title": "OrganisationVerification",
+        "type": "object"
+      },
+      "OrganisationVerificationResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/OrganisationVerificationResult"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "OrganisationVerificationResponse",
+        "type": "object"
+      },
+      "OrganisationVerificationResult": {
+        "additionalProperties": false,
+        "properties": {
+          "verificationStatus": {
+            "$ref": "#/components/schemas/VerificationStatus"
+          }
+        },
+        "required": [
+          "verificationStatus"
+        ],
+        "title": "OrganisationVerificationResult",
+        "type": "object"
+      },
+      "PageMeta": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "minimum": 1.0,
+            "title": "Page",
+            "type": "integer"
+          },
+          "pageSize": {
+            "minimum": 1.0,
+            "title": "Pagesize",
+            "type": "integer"
+          },
+          "total": {
+            "minimum": 0.0,
+            "title": "Total",
+            "type": "integer"
+          },
+          "totalPages": {
+            "minimum": 1.0,
+            "title": "Totalpages",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "page",
+          "pageSize",
+          "total",
+          "totalPages"
+        ],
+        "title": "PageMeta",
+        "type": "object"
+      },
+      "Receipt": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "imageUrl": {
+            "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+            "minLength": 1,
+            "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+            "title": "Imageurl",
+            "type": "string"
+          },
+          "thumbnailUrl": {
+            "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+            "minLength": 1,
+            "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+            "title": "Thumbnailurl",
+            "type": "string"
+          },
+          "uploadedAtServer": {
+            "description": "Authoritative upload time (spec 7).",
+            "format": "date-time",
+            "title": "Uploadedatserver",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "imageUrl",
+          "thumbnailUrl",
+          "uploadedAtServer"
+        ],
+        "title": "Receipt",
+        "type": "object"
+      },
+      "ReviewDecision": {
+        "enum": [
+          "APPROVE",
+          "REJECT"
+        ],
+        "title": "ReviewDecision",
+        "type": "string"
+      },
+      "UpdateCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "body": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Body",
+            "type": "string"
+          },
+          "imageUrls": {
+            "items": {
+              "description": "Absolute URL, or a root-relative path such as /images/x.jpg.",
+              "minLength": 1,
+              "pattern": "^(https?://\\S+|/[^/\\s]\\S*)$",
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Imageurls",
+            "type": "array"
+          }
+        },
+        "required": [
+          "body"
+        ],
+        "title": "UpdateCreate",
+        "type": "object"
+      },
+      "UpdateCreatedResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CampaignUpdate"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "UpdateCreatedResponse",
+        "type": "object"
+      },
+      "UserRole": {
+        "enum": [
+          "ORG_ADMIN",
+          "WITNESS",
+          "PLATFORM_ADMIN"
+        ],
+        "title": "UserRole",
+        "type": "string"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      },
+      "VerificationStatus": {
+        "enum": [
+          "PENDING",
+          "VERIFIED",
+          "REJECTED"
+        ],
+        "title": "VerificationStatus",
+        "type": "string"
+      },
+      "VerifyDecision": {
+        "enum": [
+          "VERIFY",
+          "REJECT"
+        ],
+        "title": "VerifyDecision",
+        "type": "string"
+      },
+      "WebhookAck": {
+        "additionalProperties": false,
+        "properties": {
+          "received": {
+            "default": true,
+            "title": "Received",
+            "type": "boolean"
+          }
+        },
+        "title": "WebhookAck",
+        "type": "object"
+      },
+      "WebhookEvent": {
+        "additionalProperties": true,
+        "description": "The provider's event body, passed through as received. It is verified, not trusted.",
+        "properties": {
+          "data": {
+            "additionalProperties": true,
+            "title": "Data",
+            "type": "object"
+          },
+          "event": {
+            "minLength": 1,
+            "title": "Event",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event",
+          "data"
+        ],
+        "title": "WebhookEvent",
+        "type": "object"
+      },
+      "WitnessAssign": {
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "description": "Email address.",
+            "maxLength": 254,
+            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "title": "Email",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "description": "Phone number, for example +2348012345678.",
+                "maxLength": 20,
+                "minLength": 7,
+                "pattern": "^\\+?[0-9 ()-]+$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          }
+        },
+        "required": [
+          "name",
+          "email"
+        ],
+        "title": "WitnessAssign",
+        "type": "object"
+      },
+      "WitnessAssigned": {
+        "additionalProperties": false,
+        "properties": {
+          "assignmentId": {
+            "format": "uuid",
+            "title": "Assignmentid",
+            "type": "string"
+          },
+          "witnessName": {
+            "minLength": 1,
+            "title": "Witnessname",
+            "type": "string"
+          }
+        },
+        "required": [
+          "assignmentId",
+          "witnessName"
+        ],
+        "title": "WitnessAssigned",
+        "type": "object"
+      },
+      "WitnessAssignedResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/WitnessAssigned"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "WitnessAssignedResponse",
+        "type": "object"
+      },
+      "WitnessCampaign": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "organisationName": {
+            "minLength": 1,
+            "title": "Organisationname",
+            "type": "string"
+          },
+          "pendingItems": {
+            "description": "Items still waiting for this witness.",
+            "minimum": 0.0,
+            "title": "Pendingitems",
+            "type": "integer"
+          },
+          "slug": {
+            "minLength": 1,
+            "title": "Slug",
+            "type": "string"
+          },
+          "title": {
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "organisationName",
+          "pendingItems"
+        ],
+        "title": "WitnessCampaign",
+        "type": "object"
+      },
+      "WitnessCampaignListResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/WitnessCampaign"
+            },
+            "title": "Data",
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "WitnessCampaignListResponse",
+        "type": "object"
+      },
+      "WitnessConfirmation": {
+        "additionalProperties": false,
+        "description": "The independent witness's word on one item (spec 7). Witnesses are named publicly.",
+        "properties": {
+          "comment": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comment"
+          },
+          "confirmedAt": {
+            "format": "date-time",
+            "title": "Confirmedat",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/WitnessDecision"
+          },
+          "witnessName": {
+            "minLength": 1,
+            "title": "Witnessname",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "witnessName",
+          "confirmedAt",
+          "comment"
+        ],
+        "title": "WitnessConfirmation",
+        "type": "object"
+      },
+      "WitnessDecision": {
+        "enum": [
+          "CONFIRMED",
+          "DISPUTED"
+        ],
+        "title": "WitnessDecision",
+        "type": "string"
+      },
+      "WitnessDecisionRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "comment": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comment"
+          },
+          "status": {
+            "$ref": "#/components/schemas/WitnessDecision"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "title": "WitnessDecisionRequest",
+        "type": "object"
+      },
+      "WitnessDecisionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/WitnessConfirmation"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "WitnessDecisionResponse",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "sessionCookie": {
+        "description": "Server-side session in an httpOnly cookie (ADR-011). Sign in with POST /api/auth/login.",
+        "in": "cookie",
+        "name": "amanah_session",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Amanah API contract. Money is integer kobo; timestamps are UTC ISO 8601.",
+    "title": "Amanah API",
+    "version": "0.1.0",
+    "x-error-codes": {
+      "AMOUNT_EXCEEDS_AVAILABLE": {
+        "meaning": "More than is available. details.availableAmount says how much can be given.",
+        "status": 409
+      },
+      "BAD_REQUEST": {
+        "meaning": "The request could not be understood.",
+        "status": 400
+      },
+      "CAMPAIGN_LOCKED": {
+        "meaning": "The target and items cannot change after a donation.",
+        "status": 409
+      },
+      "CAMPAIGN_NOT_ACCEPTING": {
+        "meaning": "The campaign is not live.",
+        "status": 409
+      },
+      "CONFLICT": {
+        "meaning": "The request conflicts with the current state.",
+        "status": 409
+      },
+      "EXPENSE_EXCEEDS_RAISED": {
+        "meaning": "Total expenses would exceed the amount raised.",
+        "status": 409
+      },
+      "FILE_TOO_LARGE": {
+        "meaning": "The file is larger than allowed.",
+        "status": 413
+      },
+      "FORBIDDEN": {
+        "meaning": "Signed in, but this role or organisation may not do this.",
+        "status": 403
+      },
+      "INTERNAL_ERROR": {
+        "meaning": "Something went wrong. Nothing internal is revealed.",
+        "status": 500
+      },
+      "INVALID_CREDENTIALS": {
+        "meaning": "Wrong email or password. Never says which.",
+        "status": 401
+      },
+      "INVALID_SIGNATURE": {
+        "meaning": "The webhook signature did not verify.",
+        "status": 400
+      },
+      "INVALID_TRANSITION": {
+        "meaning": "That status change is not allowed from here.",
+        "status": 409
+      },
+      "ITEMS_TARGET_MISMATCH": {
+        "meaning": "The items do not add up to the target.",
+        "status": 422
+      },
+      "METHOD_NOT_ALLOWED": {
+        "meaning": "That method is not supported on this path.",
+        "status": 405
+      },
+      "NOT_FOUND": {
+        "meaning": "No such resource, or it is not public.",
+        "status": 404
+      },
+      "NOT_IMPLEMENTED": {
+        "meaning": "In the contract but not built yet (see x-roadmap).",
+        "status": 501
+      },
+      "ORGANISATION_NOT_VERIFIED": {
+        "meaning": "Only a verified organisation can publish.",
+        "status": 409
+      },
+      "RATE_LIMITED": {
+        "meaning": "Too many requests. Try again later.",
+        "status": 429
+      },
+      "TARGET_REACHED": {
+        "meaning": "Nothing is available: the target is reached or reserved.",
+        "status": 409
+      },
+      "UNAUTHORIZED": {
+        "meaning": "No valid session. Sign in first.",
+        "status": 401
+      },
+      "UNSUPPORTED_FILE_TYPE": {
+        "meaning": "Only image files are accepted for evidence.",
+        "status": 415
+      },
+      "VALIDATION_ERROR": {
+        "meaning": "A field is missing or invalid. The message names it.",
+        "status": 422
+      },
+      "WITNESS_CONFLICT": {
+        "meaning": "A witness cannot be an admin of the organisation.",
+        "status": 409
+      }
+    }
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/admin/audit-log": {
+      "get": {
+        "operationId": "listAuditLog",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "entityType",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Entitytype"
+            }
+          },
+          {
+            "in": "query",
+            "name": "entityId",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Entityid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "The append-only audit log, newest first",
+        "tags": [
+          "admin"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B10.4"
+      }
+    },
+    "/api/admin/campaigns": {
+      "get": {
+        "operationId": "listAdminCampaigns",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/CampaignStatus"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "PENDING_REVIEW",
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminCampaignListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Campaigns, newest first (the review queue)",
+        "tags": [
+          "admin"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B10.2"
+      }
+    },
+    "/api/admin/campaigns/{campaign_id}/review": {
+      "post": {
+        "description": "Approval makes it LIVE. Rejection needs a reason and returns it to the organisation.",
+        "operationId": "reviewCampaign",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaign_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignReview"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgCampaignResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Approve or reject a campaign",
+        "tags": [
+          "admin"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B4.2"
+      }
+    },
+    "/api/admin/excess": {
+      "get": {
+        "operationId": "listExcess",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExcessListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Excess records, newest first",
+        "tags": [
+          "admin"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B10.3"
+      }
+    },
+    "/api/admin/excess/{excess_id}": {
+      "patch": {
+        "operationId": "resolveExcess",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "excess_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Excess Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExcessResolution"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExcessResolutionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Resolve an excess record",
+        "tags": [
+          "admin"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B7.4"
+      }
+    },
+    "/api/admin/organisations": {
+      "get": {
+        "operationId": "listAdminOrganisations",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/VerificationStatus"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "PENDING",
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminOrganisationListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Organisations, newest first (the verification queue)",
+        "tags": [
+          "admin"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B10.1"
+      }
+    },
+    "/api/admin/organisations/{organisation_id}/verify": {
+      "post": {
+        "description": "Rejection needs a reason.",
+        "operationId": "verifyOrganisation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organisation_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Organisation Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganisationVerification"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationVerificationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Verify or reject an organisation",
+        "tags": [
+          "admin"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B3.3"
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "description": "Sets the httpOnly session cookie. Wrong credentials always answer the same generic 401 INVALID_CREDENTIALS. Rate limited.",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentUserResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Too many requests"
+          }
+        },
+        "summary": "Sign in",
+        "tags": [
+          "auth"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B2.1"
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "description": "Ends the session and clears the cookie.",
+        "operationId": "logout",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Sign out",
+        "tags": [
+          "auth"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B2.1"
+      }
+    },
+    "/api/campaigns": {
+      "get": {
+        "description": "Live and recently completed campaigns, with the values the filters can offer.",
+        "operationId": "listCampaigns",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "minimum": 1,
+              "title": "Page",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "schema": {
+              "default": 6,
+              "maximum": 50,
+              "minimum": 1,
+              "title": "Pagesize",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "city",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "City"
+            }
+          },
+          {
+            "in": "query",
+            "name": "organisationId",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Organisationid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "summary": "List public campaigns",
+        "tags": [
+          "public"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B5.1"
+      }
+    },
+    "/api/campaigns/{campaign_id}/checkout": {
+      "post": {
+        "description": "Creates a reservation inside a locked transaction (spec 4.2) and initialises the payment. Answers 409 AMOUNT_EXCEEDS_AVAILABLE (with details.availableAmount), TARGET_REACHED or CAMPAIGN_NOT_ACCEPTING when the donation cannot be taken.",
+        "operationId": "createCheckout",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaign_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckoutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Too many requests"
+          }
+        },
+        "summary": "Reserve an amount and start the payment",
+        "tags": [
+          "public"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B6.1"
+      }
+    },
+    "/api/campaigns/{slug}": {
+      "get": {
+        "description": "Items, witness confirmations, expenses, evidence and updates in one response. Drafts and unknown slugs answer 404.",
+        "operationId": "getCampaign",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "title": "Slug",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignDetailResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "A campaign with its accountability data",
+        "tags": [
+          "public"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B5.2"
+      }
+    },
+    "/api/donations/{reference}": {
+      "get": {
+        "description": "The reference is the reservation ID. Never includes the donor's email or phone. The page must not claim success before status is CONFIRMED.",
+        "operationId": "getDonation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "reference",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Reference",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DonationStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Donation status for the result page",
+        "tags": [
+          "public"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B7.5"
+      }
+    },
+    "/api/me": {
+      "get": {
+        "description": "Role and organisation memberships. Donors are guests and have no account.",
+        "operationId": "getCurrentUser",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentUserResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "The signed-in user",
+        "tags": [
+          "auth"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B2.3"
+      }
+    },
+    "/api/org/campaigns": {
+      "get": {
+        "operationId": "listOrgCampaigns",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgCampaignListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "The organisation's campaigns, every status",
+        "tags": [
+          "organisation"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B4.1"
+      },
+      "post": {
+        "description": "Items must add up to the target, which is their sum. Only a verified organisation can later submit it.",
+        "operationId": "createCampaign",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgCampaignResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Create a campaign (draft)",
+        "tags": [
+          "organisation"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B4.1"
+      }
+    },
+    "/api/org/campaigns/{campaign_id}": {
+      "patch": {
+        "description": "After the first donation the target and items are locked (CAMPAIGN_LOCKED).",
+        "operationId": "editCampaign",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaign_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignEdit"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgCampaignResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Edit a draft",
+        "tags": [
+          "organisation"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B4.3"
+      }
+    },
+    "/api/org/campaigns/{campaign_id}/close": {
+      "post": {
+        "operationId": "closeCampaign",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaign_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgCampaignResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Close a campaign early",
+        "tags": [
+          "organisation"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B4.4"
+      }
+    },
+    "/api/org/campaigns/{campaign_id}/evidence": {
+      "post": {
+        "description": "Multipart form (see the request body). The server's upload time is authoritative; the phone's capture time and location are stored as given. Images only.",
+        "operationId": "uploadEvidence",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaign_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/EvidenceUpload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvidenceCreatedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "File too large"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unsupported file type"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Upload a receipt or an evidence photo",
+        "tags": [
+          "organisation"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B8.2"
+      }
+    },
+    "/api/org/campaigns/{campaign_id}/expenses": {
+      "post": {
+        "description": "Total expenses can never exceed the amount raised (EXPENSE_EXCEEDS_RAISED).",
+        "operationId": "logExpense",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaign_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpenseCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpenseResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Log an expense",
+        "tags": [
+          "organisation"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B8.3"
+      }
+    },
+    "/api/org/campaigns/{campaign_id}/submit": {
+      "post": {
+        "operationId": "submitCampaign",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaign_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgCampaignResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Submit for review",
+        "tags": [
+          "organisation"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B4.2"
+      }
+    },
+    "/api/org/campaigns/{campaign_id}/updates": {
+      "post": {
+        "operationId": "postUpdate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaign_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateCreatedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Post an update to the timeline",
+        "tags": [
+          "organisation"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B9.3"
+      }
+    },
+    "/api/org/campaigns/{campaign_id}/witnesses": {
+      "post": {
+        "description": "A witness cannot be an admin of the organisation (WITNESS_CONFLICT).",
+        "operationId": "assignWitness",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "campaign_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WitnessAssign"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WitnessAssignedResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Assign a witness",
+        "tags": [
+          "organisation"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B9.1"
+      }
+    },
+    "/api/organisations": {
+      "post": {
+        "description": "Creates the organisation as PENDING and its admin account. A platform admin verifies it before it can publish.",
+        "operationId": "registerOrganisation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganisationRegistration"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationRegisteredResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Too many requests"
+          }
+        },
+        "summary": "Register an organisation and its first admin",
+        "tags": [
+          "public"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B3.1"
+      }
+    },
+    "/api/organisations/{organisation_id}": {
+      "get": {
+        "description": "Unverified organisations answer 404. Type and registration number are never public.",
+        "operationId": "getOrganisation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organisation_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Organisation Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationProfileResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "A verified organisation's public profile",
+        "tags": [
+          "public"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B3.4"
+      }
+    },
+    "/api/webhooks/payments": {
+      "post": {
+        "description": "Verifies the signature header, then the provider's verify endpoint, before confirming anything. Idempotent: safe to replay.",
+        "operationId": "receivePaymentWebhook",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-paystack-signature",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Paystack-Signature"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookAck"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Payment provider webhook",
+        "tags": [
+          "public"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B7.3"
+      }
+    },
+    "/api/witness/campaigns": {
+      "get": {
+        "operationId": "listWitnessCampaigns",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WitnessCampaignListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Campaigns assigned to the signed-in witness",
+        "tags": [
+          "witness"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B9.2"
+      }
+    },
+    "/api/witness/items/{item_id}/confirm": {
+      "post": {
+        "description": "A dispute needs a comment. A disputed item can never be shown as delivered.",
+        "operationId": "confirmItem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WitnessDecisionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WitnessDecisionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not signed in"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not allowed for this role or organisation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Conflicts with the current state (see error.code)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "summary": "Confirm or dispute delivery of an item",
+        "tags": [
+          "witness"
+        ],
+        "x-implemented": false,
+        "x-roadmap": "B9.2"
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health",
+        "tags": [
+          "health"
+        ]
+      }
+    }
+  }
+}
