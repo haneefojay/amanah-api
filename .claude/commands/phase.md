@@ -18,8 +18,8 @@ Three stages: **1. Read**, **2. Plan and ask**, **3. Build after approval**. Do 
 
 ## 1. Read (no edits yet)
 
-1. `PROJECT_MEMORY.md` and `AGENTS.md`.
-2. The `amanah-api` skill: `.agents/skills/amanah-api/SKILL.md` and its references (`domain-rules.md`, `workflow.md`).
+1. `CLAUDE.md` and `AGENTS.md`.
+2. The `amanah-api` skill: `.claude/skills/amanah-api/SKILL.md` and its references (`domain-rules.md`, `workflow.md`).
 3. `PROJECT.md` and `docs/architecture.md`.
 4. `docs/roadmap/ROADMAP_INDEX.md`: current focus, status board, blockers, open decisions.
 5. `docs/roadmap/BACKEND_ROADMAP.md`: "How to read", the Global Definition of Done, and the full entry of every item in scope and of the items they depend on. Also the cross-reference table at the end, and the matching `F…` entries in the frontend roadmap.
@@ -50,7 +50,7 @@ For each item in order:
 2. Tests first where practical, then code, inside the item's scope. New work found gets a new roadmap ID (never renumber).
 3. Follow every hard rule in the `amanah-api` skill.
 4. Run lint, type check and the full tests. Fix failures; never weaken a test to pass.
-5. Close the item (`Done`), add notes, update "Current focus", add a `CHANGELOG.md` entry, regenerate OpenAPI if endpoints changed, write an ADR for lasting decisions, and update `PROJECT_MEMORY.md` if a durable fact changed.
+5. Close the item (`Done`), add notes, update "Current focus", add a `CHANGELOG.md` entry, regenerate OpenAPI if endpoints changed, write an ADR for lasting decisions, and update `CLAUDE.md` if a durable fact changed.
 6. Commit as the configured git user with **no AI attribution**.
 7. Stop and ask the owner whenever AGENTS.md §6 applies, even mid-build.
 

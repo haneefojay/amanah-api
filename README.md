@@ -39,5 +39,5 @@ uv run pytest
 | `docs/roadmap/`           | Backend roadmap (B0 to B12) and the status index         |
 | `docs/decisions/`         | Architecture Decision Records                            |
 | `docs/architecture.md`    | Architecture, contract, auth, storage, deployment        |
-| `AGENTS.md` / `PROJECT_MEMORY.md` | Guides for AI agents and contributors                    |
+| `AGENTS.md` / `CLAUDE.md` | Guides for AI agents and contributors                    |
 | `CHANGELOG.md`            | Change history                                           |

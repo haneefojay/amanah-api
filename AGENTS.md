@@ -1,12 +1,12 @@
 # AGENTS.md: how agents work on Amanah API
 
-The operating guide for **any** AI coding agent (Codex, Cursor, Copilot and others) and for human contributors. **Also read [`PROJECT_MEMORY.md`](./PROJECT_MEMORY.md)**, which takes precedence where the two differ.
+The operating guide for **any** AI coding agent (Claude, Codex, Cursor, Copilot and others) and for human contributors. **Claude: also read [`CLAUDE.md`](./CLAUDE.md)**, which takes precedence where the two differ.
 
 ---
 
 ## 1. Start of every session
 
-1. Read [`PROJECT_MEMORY.md`](./PROJECT_MEMORY.md). Agents that support skills: load `.agents/skills/amanah-api/SKILL.md`.
+1. Read [`CLAUDE.md`](./CLAUDE.md). Agents that support skills: load `.claude/skills/amanah-api/SKILL.md`.
 2. Read [`docs/roadmap/ROADMAP_INDEX.md`](docs/roadmap/ROADMAP_INDEX.md): current focus, milestones, status board, blockers.
 3. Skim the latest entries in [`CHANGELOG.md`](./CHANGELOG.md).
 4. For the item you'll work on, read its full entry in [`BACKEND_ROADMAP.md`](docs/roadmap/BACKEND_ROADMAP.md), the spec sections it cites ([`docs/amanah-mvp-spec.md`](docs/amanah-mvp-spec.md)), and the related ADRs ([`docs/decisions/`](docs/decisions/README.md)).
@@ -27,7 +27,7 @@ The operating guide for **any** AI coding agent (Codex, Cursor, Copilot and othe
 3. Update the item in **ROADMAP_INDEX.md** and its "Current focus" section.
 4. Add a **CHANGELOG.md** entry under `[Unreleased]`.
 5. Write an **ADR** (next number) for any decision with lasting impact and add it to `docs/decisions/README.md`.
-6. Commit as the configured git user with **no AI attribution** (see `PROJECT_MEMORY.md`).
+6. Commit as the configured git user with **no AI attribution** (see `CLAUDE.md`).
 7. Summarise for the user what changed, what was tested, and what needs their decision.
 
 ## 4. Project rules (non-negotiable)
@@ -73,7 +73,7 @@ migrations/            Alembic (env.py is async; versions/ holds the revisions)
 tests/                 unit/, integration/ (real PostgreSQL); conftest.py has the fixtures
 scripts/               Helper scripts (test database init; seed data and OpenAPI export later)
 docs/                  Spec, roadmap, decisions, architecture
-.agents/               Skills and commands for the agent
+.claude/               Skills and commands for Claude
 ```
 
 Add new areas as `app/api/<area>.py` routers with their services and models beside them. Models must be imported in `migrations/env.py` so Alembic sees them.

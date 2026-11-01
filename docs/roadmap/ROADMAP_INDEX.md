@@ -14,7 +14,7 @@
 
 ## 1. How to use the roadmap (agent workflow)
 
-1. **Orient.** Read `PROJECT_MEMORY.md` and `AGENTS.md`, then sections 2 (Current focus) and 4 (Status board) here.
+1. **Orient.** Read `CLAUDE.md` and `AGENTS.md`, then sections 2 (Current focus) and 4 (Status board) here.
 2. **Pick work.** Take the highest-priority `Not started` item whose dependencies are `Done`. Prefer P0 over P1 over P2, items in the current milestone, and items that unblock the most P0 frontend work (see the cross-reference table at the end of the backend roadmap). Never start a `Blocked` item.
 3. **Claim it.** Set `In progress`, put your name or agent ID in **Owner**, and set **Updated** to today.
 4. **Read the full entry** in `BACKEND_ROADMAP.md`, and the spec sections it cites.
@@ -60,10 +60,10 @@ These are suggested dates. Adjust them here if the team changes them, and record
 | ID    | Feature                                | Pri | Status      | Owner  | Updated    | Notes                                                    |
 | ----- | -------------------------------------- | --- | ----------- | ------ | ---------- | -------------------------------------------------------- |
 | B0.1  | Backend stack decision                 | P0  | Done        | Haneef | 2026-11-01 | ADR-004 accepted: FastAPI + PostgreSQL, separate repo    |
-| B0.2 | Service skeleton | P0 | In progress | Agent | 2026-11-01 | PR feat/B0.2-service-skeleton: FastAPI factory, /health, settings that fail fast, request ID, CORS, Dockerfile, CI. Done when CI is green on the PR |
+| B0.2 | Service skeleton | P0 | In progress | Claude | 2026-11-01 | PR feat/B0.2-service-skeleton: FastAPI factory, /health, settings that fail fast, request ID, CORS, Dockerfile, CI. Done when CI is green on the PR |
 | B0.3  | API contract (OpenAPI)                 | P0  | In review   |        | 2026-11-01 | Models, 28 stub routes, `openapi.json`, error catalogue, frontend payload check. See `docs/api-contract.md` |
-| B0.4 | Database and migrations | P0 | In progress | Agent | 2026-11-01 | SQLAlchemy 2 async, Alembic baseline, docker-compose (Postgres, MinIO), separate test DB, up/down/up migration test. Windows setup not yet verified on Windows |
-| B0.5 | Test harness | P0 | In progress | Agent | 2026-11-01 | pytest with rollback-isolated sessions on real PostgreSQL. Entity factories and per-role clients land with B1.1 and B2.1 |
+| B0.4 | Database and migrations | P0 | In progress | Claude | 2026-11-01 | SQLAlchemy 2 async, Alembic baseline, docker-compose (Postgres, MinIO), separate test DB, up/down/up migration test. Windows setup not yet verified on Windows |
+| B0.5 | Test harness | P0 | In progress | Claude | 2026-11-01 | pytest with rollback-isolated sessions on real PostgreSQL. Entity factories and per-role clients land with B1.1 and B2.1 |
 | B1.1  | Core schema                            | P0  | Not started |        |            |                                                          |
 | B1.2  | Append-only audit log                  | P0  | Not started |        |            |                                                          |
 | B1.3  | Demo seed data                         | P0  | Not started |        |            | Pilot organisation `[PLACEHOLDER]`                       |
@@ -148,5 +148,5 @@ Defaults from spec §11 are assumed until the team decides. When one is decided,
 
 | Date | Change | By |
 | ---- | ------ | -- |
-| 2026-11-01 | B0.2, B0.4, B0.5 in progress: service skeleton, database layer and test harness in one PR. | Agent |
-| 2026-11-01 | Repository created with the spec, backend roadmap and ADRs. B0.1 done (ADR-004). ADR-011 to ADR-013 accepted. | Agent |
+| 2026-11-01 | B0.2, B0.4, B0.5 in progress: service skeleton, database layer and test harness in one PR. | Claude |
+| 2026-11-01 | Repository created with the spec, backend roadmap and ADRs. B0.1 done (ADR-004). ADR-011 to ADR-013 accepted. | Claude |
