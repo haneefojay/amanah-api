@@ -1294,6 +1294,93 @@
         "title": "EvidenceType",
         "type": "string"
       },
+      "EvidenceUpload": {
+        "additionalProperties": false,
+        "description": "Describes the multipart form of POST /api/org/campaigns/{id}/evidence (B8.2).",
+        "properties": {
+          "capturedAtClient": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Capturedatclient"
+          },
+          "expenseId": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Expenseid"
+          },
+          "file": {
+            "format": "binary",
+            "title": "File",
+            "type": "string"
+          },
+          "itemId": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Itemid"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "maximum": 90,
+                "minimum": -90,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "maximum": 180,
+                "minimum": -180,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Longitude"
+          },
+          "type": {
+            "$ref": "#/components/schemas/EvidenceType"
+          }
+        },
+        "required": [
+          "file",
+          "type"
+        ],
+        "title": "EvidenceUpload",
+        "type": "object"
+      },
       "ExcessListResponse": {
         "additionalProperties": false,
         "properties": {

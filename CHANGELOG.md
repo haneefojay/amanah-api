@@ -20,6 +20,10 @@ Sections per release: **Added**, **Changed**, **Fixed**, **Removed**, **Security
 
 - **Python 3.14 and FastAPI 0.162** (owner decision, 2026-11-01): `.python-version`, the Dockerfile, `requires-python`, Ruff and mypy targets move from 3.12 to 3.14; the FastAPI floor is now 0.162.
 
+### Fixed
+
+- **OpenAPI:** the evidence upload's multipart schema (`EvidenceUpload`) was referenced but missing from `components`, which broke type generators. It is now registered, and a test checks that every `$ref` resolves.
+
 ### Decisions
 
 - **ADR-004 accepted:** FastAPI on PostgreSQL (SQLAlchemy, Alembic, pytest), in this separate repository.
