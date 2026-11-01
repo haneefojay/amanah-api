@@ -30,8 +30,8 @@ Status values: `Not started`, `In progress`, `Done`, `Blocked`, `Dropped`.
 
 ## 2. Current focus
 
-- **Now:** the repository was created on 2026-11-01 and holds documentation only. B0.1 is done (ADR-004: FastAPI on PostgreSQL). Auth, hosting and file storage are decided (ADR-011 to ADR-013).
-- **Next:** B0.2 service skeleton with `/health`, then B0.4 database and migrations, B0.5 test harness, B0.3 OpenAPI contract, and CI. After B0: B1 (schema, audit log, seed data) and B2 (auth).
+- **Now:** B0.2, B0.4 and B0.5 are in one PR (`feat/B0.2-service-skeleton`) awaiting green CI. B0.1 is done (ADR-004). Auth, hosting and file storage are decided (ADR-011 to ADR-013).
+- **Next:** B0.3 OpenAPI export and contract check against the frontend schemas, then B1 (schema, audit log, seed data) and B2 (auth). Staging on Railway (B12.4) can start once CI is green.
 - **Decisions needed from the team:** spec open decisions D8, D9 and D11, the convention date, and the pilot organisation.
 
 ---
@@ -60,10 +60,10 @@ These are suggested dates. Adjust them here if the team changes them, and record
 | ID    | Feature                                | Pri | Status      | Owner  | Updated    | Notes                                                    |
 | ----- | -------------------------------------- | --- | ----------- | ------ | ---------- | -------------------------------------------------------- |
 | B0.1  | Backend stack decision                 | P0  | Done        | Haneef | 2026-11-01 | ADR-004 accepted: FastAPI + PostgreSQL, separate repo    |
-| B0.2  | Service skeleton                       | P0  | Not started |        |            | Ready to start                                           |
+| B0.2 | Service skeleton | P0 | In progress | Claude | 2026-11-01 | PR feat/B0.2-service-skeleton: FastAPI factory, /health, settings that fail fast, request ID, CORS, Dockerfile, CI. Done when CI is green on the PR |
 | B0.3  | API contract (OpenAPI)                 | P0  | Not started |        |            | Draft frontend schemas exist in `src/lib/api/schemas.ts` |
-| B0.4  | Database and migrations                | P0  | Not started |        |            | PostgreSQL required                                      |
-| B0.5  | Test harness                           | P0  | Not started |        |            |                                                          |
+| B0.4 | Database and migrations | P0 | In progress | Claude | 2026-11-01 | SQLAlchemy 2 async, Alembic baseline, docker-compose (Postgres, MinIO), separate test DB, up/down/up migration test. Windows setup not yet verified on Windows |
+| B0.5 | Test harness | P0 | In progress | Claude | 2026-11-01 | pytest with rollback-isolated sessions on real PostgreSQL. Entity factories and per-role clients land with B1.1 and B2.1 |
 | B1.1  | Core schema                            | P0  | Not started |        |            |                                                          |
 | B1.2  | Append-only audit log                  | P0  | Not started |        |            |                                                          |
 | B1.3  | Demo seed data                         | P0  | Not started |        |            | Pilot organisation `[PLACEHOLDER]`                       |
@@ -148,4 +148,5 @@ Defaults from spec §11 are assumed until the team decides. When one is decided,
 
 | Date | Change | By |
 | ---- | ------ | -- |
+| 2026-11-01 | B0.2, B0.4, B0.5 in progress: service skeleton, database layer and test harness in one PR. | Claude |
 | 2026-11-01 | Repository created with the spec, backend roadmap and ADRs. B0.1 done (ADR-004). ADR-011 to ADR-013 accepted. | Claude |

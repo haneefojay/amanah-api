@@ -8,6 +8,13 @@ Sections per release: **Added**, **Changed**, **Fixed**, **Removed**, **Security
 
 ## [Unreleased]
 
+### Added
+
+- **Service skeleton (B0.2):** FastAPI app factory (`app/main.py`), `GET /health` that checks the database (503 when it is down), settings loaded with pydantic-settings that fail fast on a missing `DATABASE_URL`, structured logging (JSON in staging and production), a request ID on every response, CORS restricted to the configured frontend origins with credentials, the standard error envelope for HTTP, validation and unhandled errors (no stack traces to clients), docs at `/api/docs`. A `Dockerfile` for Railway or any Docker host.
+- **Database layer (B0.4):** async SQLAlchemy 2 with asyncpg, an Alembic baseline migration, `docker-compose.yml` for PostgreSQL 16 (with a separate `amanah_test` database) and MinIO.
+- **Test harness (B0.5):** pytest and pytest-asyncio against a real PostgreSQL. Each test gets a session in a rolled-back transaction, and an HTTP client for the app. 19 tests cover config, `/health`, request IDs, CORS, the error envelope, rollback isolation, and that migrations apply, roll back and apply again.
+- **CI:** GitHub Actions run Ruff, mypy (strict), migrations and pytest against a PostgreSQL service, plus a Docker build.
+
 ### Decisions
 
 - **ADR-004 accepted:** FastAPI on PostgreSQL (SQLAlchemy, Alembic, pytest), in this separate repository.

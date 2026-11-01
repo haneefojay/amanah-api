@@ -22,7 +22,7 @@ The operating guide for **any** AI coding agent (Claude, Codex, Cursor, Copilot 
 
 ## 3. Finishing the work
 
-1. Lint, type check and tests pass locally (the exact commands are added by B0.2; until then, none apply).
+1. `uv run ruff check . && uv run ruff format --check . && uv run mypy && uv run pytest` passes locally (needs PostgreSQL: `docker compose up -d`).
 2. The OpenAPI document is regenerated and committed if an endpoint changed, and the frontend is told (see §5).
 3. Update the item in **ROADMAP_INDEX.md** and its "Current focus" section.
 4. Add a **CHANGELOG.md** entry under `[Unreleased]`.
@@ -61,26 +61,32 @@ These come from spec §4 and §9 and the backend roadmap. A reviewer rejects any
 - When the spec and a roadmap entry disagree. The spec wins, but flag it.
 - Anything involving real money, real credentials or production data.
 
-## 7. Repository map (target layout; B0.2 creates it)
+## 7. Repository map
 
 ```
-app/                   FastAPI application (routers, services, models, schemas, core config)
-migrations/            Alembic migrations
-tests/                 unit/, integration/ (real PostgreSQL), concurrency/
-scripts/               Seed data, OpenAPI export, helpers
+app/
+  main.py              create_app(): middleware, error handlers, routers, lifespan
+  api/                 Routers (one module per area; health.py today)
+  core/                config.py (settings), logging.py, request_id.py, errors.py
+  db/                  base.py (declarative base), session.py (engine, session dependency)
+migrations/            Alembic (env.py is async; versions/ holds the revisions)
+tests/                 unit/, integration/ (real PostgreSQL); conftest.py has the fixtures
+scripts/               Helper scripts (test database init; seed data and OpenAPI export later)
 docs/                  Spec, roadmap, decisions, architecture
 .claude/               Skills and commands for Claude
 ```
 
-The layout may change when B0.2 is designed; update this section then.
+Add new areas as `app/api/<area>.py` routers with their services and models beside them. Models must be imported in `migrations/env.py` so Alembic sees them.
 
-## 8. Commands (target; B0.2 and B0.4 add them)
+## 8. Commands
 
 | Command | What it does |
 | ------- | ------------ |
 | `docker compose up -d` | PostgreSQL and MinIO for local development |
 | `uv sync` | Install dependencies |
-| `uv run fastapi dev` | Run the API locally |
-| `uv run alembic upgrade head` | Apply migrations |
+| `uv run uvicorn app.main:app --reload` | Run the API locally (needs `DATABASE_URL`) |
+| `uv run alembic upgrade head` / `alembic downgrade -1` | Apply or roll back migrations |
+| `uv run alembic revision -m "message"` | Create a migration (add `--autogenerate` once models exist) |
 | `uv run pytest` | Run the tests |
 | `uv run ruff check . && uv run ruff format --check .` | Lint and format check |
+| `uv run mypy` | Type check (strict) |
