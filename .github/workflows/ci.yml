@@ -16,7 +16,8 @@ jobs:
         image: postgres:16
         env:
           POSTGRES_USER: amanah
-          POSTGRES_PASSWORD: amanah
+          # Throwaway database inside the CI job: trust auth means no password is stored here.
+          POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_DB: amanah
         ports:
           - 5432:5432
@@ -26,14 +27,14 @@ jobs:
           --health-timeout 3s
           --health-retries 10
     env:
-      DATABASE_URL: postgresql+asyncpg://amanah:amanah@localhost:5432/amanah
-      TEST_DATABASE_URL: postgresql+asyncpg://amanah:amanah@localhost:5432/amanah_test
+      DATABASE_URL: postgresql+asyncpg://amanah@localhost:5432/amanah
+      TEST_DATABASE_URL: postgresql+asyncpg://amanah@localhost:5432/amanah_test
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
       - run: uv sync --frozen
       - name: Create the test database
-        run: PGPASSWORD=amanah psql -h localhost -U amanah -d amanah -c "CREATE DATABASE amanah_test"
+        run: psql -h localhost -U amanah -d amanah -c "CREATE DATABASE amanah_test"
       - name: Lint
         run: uv run ruff check .
       - name: Format
