@@ -17,12 +17,12 @@ Amanah is a transparent Islamic donation platform (general donations only, never
 
 ## Current architecture (as of 2026-11-01)
 
-- **Stack (ADR-004):** Python, FastAPI, Pydantic v2, PostgreSQL, SQLAlchemy 2 and Alembic, `uv`, pytest, Ruff.
+- **Stack (ADR-004):** Python 3.14, FastAPI 0.162, Pydantic v2, PostgreSQL, SQLAlchemy 2 and Alembic, `uv`, pytest, Ruff.
 - **Auth (ADR-011):** written by hand. argon2id passwords, opaque server-side sessions in PostgreSQL, httpOnly cookie, CSRF protection. No external auth service, no JWT.
 - **Hosting (ADR-012):** Railway for the API and PostgreSQL to start, a VPS later. Ship a Dockerfile and read all config from environment variables. These choices can change; keep the code portable.
 - **Files (ADR-013):** MinIO behind an S3-compatible adapter. Private bucket for verification documents, public bucket for receipts and evidence.
 - **Payments:** Paystack in test mode (D3). The webhook is verified twice (signature, then the provider's verify endpoint).
-- The service skeleton exists (B0.2, B0.4, B0.5 in review): `app/main.py` factory, `/health`, error envelope, request ID, Alembic baseline, pytest harness with rollback isolation. Next: B0.3 (OpenAPI export) and B1 (data model, audit log).
+- B0 is done: service skeleton (`app/main.py` factory, `/health`, error envelope, request ID, Alembic baseline, pytest harness with rollback isolation) and the API contract (`app/schemas/`, 28 stub routes answering 501, `openapi.json` regenerated with `uv run python scripts/export_openapi.py`; tests fail if it is stale). Next: modular monolith restructure (ADR-015), then B1 (data model, audit log).
 
 ## Conventions to remember
 

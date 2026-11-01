@@ -29,5 +29,7 @@ Sections per release: **Added**, **Changed**, **Fixed**, **Removed**, **Security
 
 ### Docs
 
+- Roadmap index: B0.2 to B0.5 marked Done.
+
 - `docs/api-contract.md` describes the contract conventions.
 - Repository created with the project overview, `AGENTS.md`, `CLAUDE.md`, the MVP specification, the backend roadmap (B0 to B12) refined with the chosen tools, the roadmap index (B0.1 done), ADR-003, ADR-004 and ADR-011 to ADR-013, an architecture note, the `amanah-api` Claude skill and the `/phase` command.
