@@ -2,7 +2,7 @@
 
 Every significant decision about Amanah (technology, architecture, process, or how a spec open decision was resolved) is recorded as an ADR. ADRs are **append-only history**: never rewrite an accepted ADR. To change a decision, write a new ADR that supersedes the old one and mark the old one `Superseded by ADR-XXX`.
 
-ADR numbering is **shared across the frontend and backend repositories**. This repository holds the backend decisions; the frontend decisions are in https://github.com/haneefojay/amanah/tree/main/docs/decisions. The next free number is **ADR-014** (check the frontend repository's index too before taking one).
+ADR numbering is **shared across the frontend and backend repositories**. This repository holds the backend decisions; the frontend decisions are in https://github.com/haneefojay/amanah/tree/main/docs/decisions. The next free number is **ADR-016** (ADR-014 is taken in the frontend repository) (check the frontend repository's index too before taking one).
 
 ## Index
 
@@ -13,8 +13,9 @@ ADR numbering is **shared across the frontend and backend repositories**. This r
 | [ADR-011](./ADR-011-authentication.md) | Hand-written authentication with server-side sessions | Accepted | 2026-11-01 |
 | [ADR-012](./ADR-012-hosting-railway.md) | Backend hosting on Railway, moving to a VPS later | Accepted | 2026-11-01 |
 | [ADR-013](./ADR-013-object-storage-minio.md) | Object storage on MinIO behind an S3-compatible adapter | Accepted | 2026-11-01 |
+| [ADR-015](./ADR-015-modular-monolith.md) | Modular monolith with enforced module boundaries | Accepted | 2026-11-01 |
 
-Frontend ADRs (for reference): ADR-001 framework, ADR-002 PWA strategy, ADR-005 testing, ADR-006 libraries, ADR-007 typography, ADR-008 hosting on Vercel, ADR-009 shadcn/ui, ADR-010 public accountability data.
+Frontend ADRs (for reference): ADR-001 framework, ADR-002 PWA strategy, ADR-005 testing, ADR-006 libraries, ADR-007 typography, ADR-008 hosting on Vercel, ADR-009 shadcn/ui, ADR-010 public accountability data, ADR-014 no mock API.
 
 ## How to add an ADR
 

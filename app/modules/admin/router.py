@@ -1,27 +1,34 @@
-"""Platform admin endpoints (PLATFORM_ADMIN). Contract stubs."""
+"""Platform admin endpoints (PLATFORM_ADMIN, B10). Contract stubs."""
 
 from typing import Annotated
 from uuid import UUID
 
 from fastapi import APIRouter, Query
 
-from app.api.support import errors, requires_session, roadmap, stub
-from app.schemas.org import (
+from app.core.security import requires_session
+from app.core.stubs import errors, roadmap, stub
+from app.modules.admin.schemas import (
     AdminCampaignListResponse,
     AdminOrganisationListResponse,
-    AuditLogResponse,
     CampaignReview,
+    OrganisationVerification,
+    OrganisationVerificationResponse,
+)
+from app.modules.audit import AuditLogResponse
+from app.modules.campaigns import (
+    CampaignStatus,
+    OrgCampaignResponse,
+)
+from app.modules.donations import (
     ExcessListResponse,
     ExcessResolution,
     ExcessResolutionResponse,
-    OrganisationVerification,
-    OrganisationVerificationResponse,
-    OrgCampaignResponse,
+)
+from app.modules.organisations import (
     VerificationStatus,
 )
-from app.schemas.public import CampaignStatus
 
-router = APIRouter(
+admin_router = APIRouter(
     prefix="/api/admin",
     tags=["admin"],
     dependencies=requires_session,
@@ -29,7 +36,7 @@ router = APIRouter(
 )
 
 
-@router.get(
+@admin_router.get(
     "/organisations",
     operation_id="listAdminOrganisations",
     summary="Organisations, newest first (the verification queue)",
@@ -42,7 +49,7 @@ async def list_admin_organisations(
     stub("B10.1")
 
 
-@router.post(
+@admin_router.post(
     "/organisations/{organisation_id}/verify",
     operation_id="verifyOrganisation",
     summary="Verify or reject an organisation",
@@ -55,7 +62,7 @@ async def verify_organisation(organisation_id: UUID, body: OrganisationVerificat
     stub("B3.3")
 
 
-@router.get(
+@admin_router.get(
     "/campaigns",
     operation_id="listAdminCampaigns",
     summary="Campaigns, newest first (the review queue)",
@@ -68,7 +75,7 @@ async def list_admin_campaigns(
     stub("B10.2")
 
 
-@router.post(
+@admin_router.post(
     "/campaigns/{campaign_id}/review",
     operation_id="reviewCampaign",
     summary="Approve or reject a campaign",
@@ -82,7 +89,7 @@ async def review_campaign(campaign_id: UUID, body: CampaignReview) -> None:
     stub("B4.2")
 
 
-@router.get(
+@admin_router.get(
     "/excess",
     operation_id="listExcess",
     summary="Excess records, newest first",
@@ -93,7 +100,7 @@ async def list_excess() -> None:
     stub("B10.3")
 
 
-@router.patch(
+@admin_router.patch(
     "/excess/{excess_id}",
     operation_id="resolveExcess",
     summary="Resolve an excess record",
@@ -105,7 +112,7 @@ async def resolve_excess(excess_id: UUID, body: ExcessResolution) -> None:
     stub("B7.4")
 
 
-@router.get(
+@admin_router.get(
     "/audit-log",
     operation_id="listAuditLog",
     summary="The append-only audit log, newest first",

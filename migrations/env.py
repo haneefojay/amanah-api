@@ -9,7 +9,8 @@ from app.core.config import get_settings
 from app.db.base import Base
 from app.db.session import create_engine
 
-# Import every model module here (B1.1 onwards) so autogenerate can see its tables.
+# Import every module's models here (B1.1 onwards, `app.modules.<name>.models`) so autogenerate
+# can see their tables. This is the one place outside a module that may import its models.
 
 target_metadata = Base.metadata
 

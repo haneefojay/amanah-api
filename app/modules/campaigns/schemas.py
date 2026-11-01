@@ -1,8 +1,4 @@
-"""Public read models: campaigns, organisations and their accountability data (spec 5 to 7).
-
-These mirror the frontend's `src/lib/api/schemas.ts` field for field. A contract test validates
-the frontend's mock payloads against them, so drift fails the build.
-"""
+"""Campaign models: the public catalogue and the organisation dashboard (B4, B5)."""
 
 from enum import StrEnum
 from typing import Annotated, Self
@@ -10,14 +6,25 @@ from uuid import UUID
 
 from pydantic import Field, model_validator
 
-from app.schemas.common import (
+from app.core.schemas import (
     ContractModel,
     IdName,
     ImageUrl,
     Kobo,
     PageMeta,
+    PositiveKobo,
     Text,
     Timestamp,
+)
+from app.modules.accountability import (
+    CampaignUpdate,
+    EvidencePhoto,
+    Expense,
+    WitnessConfirmation,
+    WitnessDecision,
+)
+from app.modules.organisations import (
+    OrganisationSummary,
 )
 
 
@@ -69,38 +76,6 @@ class CampaignListResponse(ContractModel):
     filters: CampaignFilters
 
 
-class OrganisationSummary(ContractModel):
-    id: UUID
-    name: Text
-    city: Text
-    state: Text
-    verified_at: Timestamp = Field(description="Only verified organisations are public.")
-    campaign_count: int = Field(ge=0, description="Public campaigns.")
-    ended_count: int = Field(ge=0, description="Closed or completed campaigns.")
-    completed_count: int = Field(ge=0)
-
-
-class WitnessDecision(StrEnum):
-    CONFIRMED = "CONFIRMED"
-    DISPUTED = "DISPUTED"
-
-
-class WitnessConfirmation(ContractModel):
-    """The independent witness's word on one item (spec 7). Witnesses are named publicly."""
-
-    status: WitnessDecision
-    witness_name: Text
-    confirmed_at: Timestamp
-    comment: Text | None
-
-    @model_validator(mode="after")
-    def _dispute_needs_comment(self) -> Self:
-        if self.status is WitnessDecision.DISPUTED and self.comment is None:
-            msg = "A dispute needs the witness's comment"
-            raise ValueError(msg)
-        return self
-
-
 class CampaignItem(ContractModel):
     """One thing the campaign buys. Items add up to the campaign target (spec 4.1)."""
 
@@ -122,51 +97,6 @@ class CampaignItem(ContractModel):
             msg = "Disputed items and disputed confirmations must agree"
             raise ValueError(msg)
         return self
-
-
-class Receipt(ContractModel):
-    id: UUID
-    image_url: ImageUrl
-    thumbnail_url: ImageUrl
-    uploaded_at_server: Timestamp = Field(description="Authoritative upload time (spec 7).")
-
-
-class Expense(ContractModel):
-    id: UUID
-    description: Text
-    vendor_name: Text
-    amount: Kobo
-    spent_at: Timestamp
-    item_id: UUID | None = Field(description="The item it paid for; null for a general cost.")
-    receipt: Receipt | None
-
-
-class EvidencePhoto(ContractModel):
-    id: UUID
-    image_url: ImageUrl
-    thumbnail_url: ImageUrl
-    item_id: UUID | None
-    expense_id: UUID | None
-    latitude: Annotated[float, Field(ge=-90, le=90)] | None
-    longitude: Annotated[float, Field(ge=-180, le=180)] | None
-    captured_at_client: Timestamp | None = Field(
-        description="What the phone said. Secondary to uploadedAtServer."
-    )
-    uploaded_at_server: Timestamp
-
-    @model_validator(mode="after")
-    def _coordinates_come_together(self) -> Self:
-        if (self.latitude is None) != (self.longitude is None):
-            msg = "Latitude and longitude come together"
-            raise ValueError(msg)
-        return self
-
-
-class CampaignUpdate(ContractModel):
-    id: UUID
-    body: Text
-    images: list[ImageUrl]
-    posted_at: Timestamp
 
 
 class CampaignDetail(CampaignSummary):
@@ -207,4 +137,46 @@ class OrganisationProfileResponse(ContractModel):
     data: OrganisationProfile
 
 
-# Used by the donation status endpoint.
+class ItemInput(ContractModel):
+    name: Text
+    quantity: int = Field(gt=0)
+    unit_cost: PositiveKobo
+
+
+class CampaignCreate(ContractModel):
+    title: Annotated[Text, Field(max_length=140)]
+    purpose: Text
+    description: Annotated[list[Text], Field(min_length=1)]
+    cover_image_url: ImageUrl | None = None
+    ends_at: Timestamp | None = None
+    items: Annotated[list[ItemInput], Field(min_length=1)]
+
+
+class CampaignEdit(ContractModel):
+    """Every field is optional. The target and items are locked after the first donation."""
+
+    title: Annotated[Text, Field(max_length=140)] | None = None
+    purpose: Text | None = None
+    description: Annotated[list[Text], Field(min_length=1)] | None = None
+    cover_image_url: ImageUrl | None = None
+    ends_at: Timestamp | None = None
+    items: Annotated[list[ItemInput], Field(min_length=1)] | None = None
+
+
+class OrgCampaign(ContractModel):
+    id: UUID
+    slug: Text
+    title: Text
+    status: CampaignStatus
+    target_amount: Kobo
+    raised_amount: Kobo
+    review_note: Text | None = Field(description="Why an admin rejected it, if they did.")
+    updated_at: Timestamp
+
+
+class OrgCampaignResponse(ContractModel):
+    data: OrgCampaign
+
+
+class OrgCampaignListResponse(ContractModel):
+    data: list[OrgCampaign]

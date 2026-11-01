@@ -1,12 +1,58 @@
-"""Checkout, payments and donation status (B6, B7). Donors are guests (spec D7)."""
+"""Checkout, donation status, payment webhook and excess models (B6, B7)."""
 
 from enum import StrEnum
-from typing import Annotated, Any
+from typing import Annotated, Any, Self
 from uuid import UUID
 
-from pydantic import ConfigDict, Field
+from pydantic import ConfigDict, Field, model_validator
 
-from app.schemas.common import ContractModel, Email, Kobo, Phone, PositiveKobo, Text, Timestamp
+from app.core.schemas import (
+    ContractModel,
+    Email,
+    Kobo,
+    Phone,
+    PositiveKobo,
+    Text,
+    Timestamp,
+)
+
+
+class ExcessStatus(StrEnum):
+    PENDING_RETURN = "PENDING_RETURN"
+    RETURNED = "RETURNED"
+    SENT_TO_BAYT_AL_MAL = "SENT_TO_BAYT_AL_MAL"
+
+
+class ExcessRecord(ContractModel):
+    id: UUID
+    donation_id: UUID
+    campaign_title: Text
+    amount: PositiveKobo
+    status: ExcessStatus
+    notes: Text | None
+    created_at: Timestamp
+
+
+class ExcessListResponse(ContractModel):
+    data: list[ExcessRecord]
+
+
+class ExcessResolution(ContractModel):
+    status: Annotated[
+        ExcessStatus, Field(description="RETURNED or SENT_TO_BAYT_AL_MAL. Not PENDING_RETURN.")
+    ]
+    notes: Text
+
+    @model_validator(mode="after")
+    def _must_resolve(self) -> Self:
+        if self.status is ExcessStatus.PENDING_RETURN:
+            msg = "Resolve to RETURNED or SENT_TO_BAYT_AL_MAL"
+            raise ValueError(msg)
+        return self
+
+
+class ExcessResolutionResponse(ContractModel):
+    data: ExcessRecord
 
 
 class CheckoutRequest(ContractModel):

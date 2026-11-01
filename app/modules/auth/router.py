@@ -1,14 +1,15 @@
-"""Authentication endpoints (ADR-011). Contract stubs until B2."""
+"""Sign in, sign out and the current user (B2). Contract stubs."""
 
 from fastapi import APIRouter, Response
 
-from app.api.support import errors, requires_session, roadmap, stub
-from app.schemas.auth import CurrentUserResponse, LoginRequest
+from app.core.security import requires_session
+from app.core.stubs import errors, roadmap, stub
+from app.modules.auth.schemas import CurrentUserResponse, LoginRequest
 
-router = APIRouter(prefix="/api", tags=["auth"])
+auth_router = APIRouter(prefix="/api", tags=["auth"])
 
 
-@router.post(
+@auth_router.post(
     "/auth/login",
     operation_id="login",
     summary="Sign in",
@@ -22,7 +23,7 @@ async def login(body: LoginRequest) -> None:
     stub("B2.1")
 
 
-@router.post(
+@auth_router.post(
     "/auth/logout",
     operation_id="logout",
     summary="Sign out",
@@ -37,7 +38,7 @@ async def logout() -> None:
     stub("B2.1")
 
 
-@router.get(
+@auth_router.get(
     "/me",
     operation_id="getCurrentUser",
     summary="The signed-in user",

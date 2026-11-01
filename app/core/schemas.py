@@ -1,4 +1,4 @@
-"""Building blocks shared by every contract model."""
+"""Building blocks shared by every contract model (cross-cutting, owned by no module)."""
 
 from typing import Annotated, Any
 from uuid import UUID

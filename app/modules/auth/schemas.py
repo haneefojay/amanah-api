@@ -1,4 +1,4 @@
-"""Authentication and the signed-in user (ADR-011, B2.1, B2.3)."""
+"""Auth request and response models (B2)."""
 
 from enum import StrEnum
 from typing import Annotated
@@ -6,7 +6,12 @@ from uuid import UUID
 
 from pydantic import Field
 
-from app.schemas.common import ContractModel, Email, IdName, Text
+from app.core.schemas import (
+    ContractModel,
+    Email,
+    IdName,
+    Text,
+)
 
 
 class UserRole(StrEnum):

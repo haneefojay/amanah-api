@@ -18,6 +18,7 @@ Sections per release: **Added**, **Changed**, **Fixed**, **Removed**, **Security
 
 ### Changed
 
+- **Modular monolith (B0.6, ADR-015):** the layered `app/api/` and `app/schemas/` packages become `app/modules/{auth, organisations, campaigns, donations, accountability, audit, admin}`, each with `router.py`, `schemas.py`, `models.py`, `service.py` and a public interface in `__init__.py`. Shared pieces move to `app/core` (`schemas.py`, `security.py`, `stubs.py`); `GET /health` moves to `app/health.py`; `app/main.py` wires the module routers. `openapi.json` is unchanged (byte-identical, all 28 routes). A new test, `tests/architecture/test_module_boundaries.py`, fails the build when a module imports another module's internals, when modules form a cycle, or when `core` or `db` import upward.
 - **Python 3.14 and FastAPI 0.162** (owner decision, 2026-11-01): `.python-version`, the Dockerfile, `requires-python`, Ruff and mypy targets move from 3.12 to 3.14; the FastAPI floor is now 0.162.
 
 ### Decisions
@@ -26,6 +27,7 @@ Sections per release: **Added**, **Changed**, **Fixed**, **Removed**, **Security
 - **ADR-011:** authentication is written by hand: argon2id passwords and server-side sessions in PostgreSQL, httpOnly cookie, CSRF protection; no external auth service.
 - **ADR-012:** hosting starts on Railway (API and PostgreSQL) and moves to a VPS later; Dockerfile and environment-variable configuration keep it portable.
 - **ADR-013:** files are stored in MinIO behind an S3-compatible adapter.
+- **ADR-015:** the API is a modular monolith with import boundaries enforced by a test.
 
 ### Docs
 
