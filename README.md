@@ -6,22 +6,30 @@ The frontend lives in [haneefojay/amanah](https://github.com/haneefojay/amanah).
 
 ## Status
 
-**Documentation only.** The service skeleton is roadmap item **B0.2**. Until it lands there is nothing to install or run. Read [`PROJECT.md`](./PROJECT.md), then [`docs/roadmap/ROADMAP_INDEX.md`](docs/roadmap/ROADMAP_INDEX.md).
+The service skeleton runs: `GET /health` (checks the database), the standard error envelope, request IDs, CORS, Alembic migrations and a pytest harness against a real PostgreSQL. There is no business logic yet. Read [`PROJECT.md`](./PROJECT.md), then [`docs/roadmap/ROADMAP_INDEX.md`](docs/roadmap/ROADMAP_INDEX.md).
 
-## Planned local setup (to be confirmed by B0.2 and B0.4)
+## Local setup
 
-Prerequisites: Python 3.12 or newer, [`uv`](https://docs.astral.sh/uv/), Docker Desktop (for PostgreSQL and MinIO), Git. It must work on Windows, macOS and Linux.
+Prerequisites: [`uv`](https://docs.astral.sh/uv/) (it installs Python 3.12 for you), Docker Desktop (for PostgreSQL and MinIO), Git. The commands are cross-platform; the Windows PowerShell form is shown where it differs.
 
 ```bash
 cp .env.example .env              # on Windows PowerShell: copy .env.example .env
 docker compose up -d              # PostgreSQL and MinIO
 uv sync
 uv run alembic upgrade head
-uv run fastapi dev                # http://localhost:8000, docs at /api/docs
+uv run uvicorn app.main:app --reload   # http://localhost:8000, docs at /api/docs
 uv run pytest                     # tests against a real PostgreSQL
 ```
 
-Command names above are the intended conventions; the item that creates each one updates this file.
+Load `.env` first or export `DATABASE_URL` (the app also reads `.env` itself). Tests use `TEST_DATABASE_URL`, which defaults to the `amanah_test` database that `docker compose` creates.
+
+### Checks (the same ones CI runs)
+
+```bash
+uv run ruff check . && uv run ruff format --check .
+uv run mypy
+uv run pytest
+```
 
 ## Documentation
 

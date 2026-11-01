@@ -1,0 +1,63 @@
+"""Application factory and entry point (`uvicorn app.main:app`)."""
+
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
+
+import structlog
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.api import health
+from app.core.config import Settings, get_settings
+from app.core.errors import register_error_handlers
+from app.core.logging import configure_logging
+from app.core.request_id import RequestIdMiddleware
+from app.db.session import create_engine, create_session_factory
+
+
+def create_app(settings: Settings | None = None) -> FastAPI:
+    settings = settings or get_settings()
+    configure_logging(settings.log_level, json_logs=settings.app_env in {"staging", "production"})
+
+    @asynccontextmanager
+    async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+        engine = create_engine(settings.database_url)
+        app.state.engine = engine
+        app.state.session_factory = create_session_factory(engine)
+        structlog.get_logger().info("startup", env=settings.app_env)
+        try:
+            yield
+        finally:
+            await engine.dispose()
+
+    app = FastAPI(
+        title="Amanah API",
+        version="0.1.0",
+        docs_url="/api/docs",
+        openapi_url="/api/openapi.json",
+        redoc_url=None,
+        lifespan=lifespan,
+    )
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.cors_origins,
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+        allow_headers=["Content-Type", "X-Request-ID", "X-CSRF-Token"],
+        expose_headers=["X-Request-ID"],
+    )
+    # Added last, so it is the outermost layer and the request ID reaches everything else.
+    app.add_middleware(RequestIdMiddleware)
+    register_error_handlers(app)
+    app.include_router(health.router)
+    return app
+
+
+def __getattr__(name: str) -> FastAPI:
+    # `app` is created lazily so importing this module never needs the environment,
+    # but `uvicorn app.main:app` still fails fast at startup when it is incomplete.
+    if name == "app":
+        instance = create_app()
+        globals()["app"] = instance
+        return instance
+    raise AttributeError(name)
