@@ -10,7 +10,7 @@ The service skeleton runs: `GET /health` (checks the database), the standard err
 
 ## Local setup
 
-Prerequisites: [`uv`](https://docs.astral.sh/uv/) (it installs Python 3.12 for you), Docker Desktop (for PostgreSQL and MinIO), Git. The commands are cross-platform; the Windows PowerShell form is shown where it differs.
+Prerequisites: [`uv`](https://docs.astral.sh/uv/) (it installs Python 3.14 for you), Docker Desktop (for PostgreSQL and MinIO), Git. The commands are cross-platform; the Windows PowerShell form is shown where it differs.
 
 ```bash
 cp .env.example .env              # on Windows PowerShell: copy .env.example .env

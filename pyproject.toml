@@ -3,9 +3,9 @@ name = "amanah-api"
 version = "0.1.0"
 description = "Backend API for Amanah, a transparent Islamic donation platform."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 dependencies = [
-    "fastapi>=0.115",
+    "fastapi>=0.162",
     "uvicorn[standard]>=0.32",
     "sqlalchemy[asyncio]>=2.0.36",
     "asyncpg>=0.30",
@@ -28,7 +28,7 @@ package = false
 
 [tool.ruff]
 line-length = 100
-target-version = "py312"
+target-version = "py314"
 extend-exclude = ["migrations/versions"]
 
 [tool.ruff.lint]
@@ -39,7 +39,7 @@ ignore = ["S101"]
 "tests/**" = ["S105", "S106", "S603", "S607"]
 
 [tool.mypy]
-python_version = "3.12"
+python_version = "3.14"
 strict = true
 files = ["app", "tests", "migrations/env.py"]
 

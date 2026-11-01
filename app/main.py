@@ -2,13 +2,16 @@
 
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from typing import Any
 
 import structlog
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.openapi.utils import get_openapi
 
-from app.api import health
+from app.api import admin, auth, health, org, public, witness
 from app.core.config import Settings, get_settings
+from app.core.error_codes import CATALOGUE
 from app.core.errors import register_error_handlers
 from app.core.logging import configure_logging
 from app.core.request_id import RequestIdMiddleware
@@ -50,7 +53,27 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.add_middleware(RequestIdMiddleware)
     register_error_handlers(app)
     app.include_router(health.router)
+    for module in (public, auth, org, witness, admin):
+        app.include_router(module.router)
+    app.openapi = lambda: build_openapi(app)  # type: ignore[method-assign]
     return app
+
+
+def build_openapi(app: FastAPI) -> dict[str, Any]:
+    """The contract: FastAPI's schema plus the error-code catalogue (`info.x-error-codes`)."""
+    if app.openapi_schema is None:
+        schema = get_openapi(
+            title=app.title,
+            version=app.version,
+            description="Amanah API contract. Money is integer kobo; timestamps are UTC ISO 8601.",
+            routes=app.routes,
+        )
+        schema["info"]["x-error-codes"] = {
+            code: {"status": item.status, "meaning": item.meaning}
+            for code, item in sorted(CATALOGUE.items())
+        }
+        app.openapi_schema = schema
+    return app.openapi_schema
 
 
 def __getattr__(name: str) -> FastAPI:

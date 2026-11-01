@@ -1,0 +1,1249 @@
+{
+  "campaignList": {
+    "data": [
+      {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a01",
+        "slug": "ramadan-food-drive-offa",
+        "title": "Ramadan food drive",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+        "organisationName": "Central Mosque, Offa",
+        "city": "Offa",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/food-drive.jpg",
+        "status": "LIVE",
+        "targetAmount": 50000000,
+        "raisedAmount": 30000000,
+        "availableAmount": 20000000
+      },
+      {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a02",
+        "slug": "school-supplies-40-orphans",
+        "title": "School supplies for 40 orphans",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+        "organisationName": "Darul Aytam Orphan Home",
+        "city": "Ilorin",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/school-supplies.jpg",
+        "status": "LIVE",
+        "targetAmount": 120000000,
+        "raisedAmount": 112000000,
+        "availableAmount": 8000000
+      },
+      {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a04",
+        "slug": "eid-clothes-30-children",
+        "title": "Eid clothes for 30 children",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+        "organisationName": "Central Mosque, Offa",
+        "city": "Offa",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/eid-clothes.jpg",
+        "status": "LIVE",
+        "targetAmount": 40000000,
+        "raisedAmount": 38000000,
+        "availableAmount": 0
+      },
+      {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a05",
+        "slug": "quran-learning-materials",
+        "title": "Qur’an learning materials for the evening class",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+        "organisationName": "Darul Aytam Orphan Home",
+        "city": "Ilorin",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/quran-class.jpg",
+        "status": "LIVE",
+        "targetAmount": 30000000,
+        "raisedAmount": 6000000,
+        "availableAmount": 24000000
+      },
+      {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a03",
+        "slug": "borehole-islamiyya-school",
+        "title": "Borehole for the Islamiyya school",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a43",
+        "organisationName": "An-Nur Islamic Society",
+        "city": "Ogbomoso",
+        "state": "Oyo",
+        "coverImageUrl": "/images/campaigns/borehole.jpg",
+        "status": "FUNDED",
+        "targetAmount": 85000000,
+        "raisedAmount": 85000000,
+        "availableAmount": 0
+      },
+      {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a10",
+        "slug": "prayer-mats-womens-section",
+        "title": "Prayer mats for the women’s section",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+        "organisationName": "Central Mosque, Offa",
+        "city": "Offa",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/prayer-mats.jpg",
+        "status": "FUNDED",
+        "targetAmount": 27000000,
+        "raisedAmount": 27000000,
+        "availableAmount": 0
+      }
+    ],
+    "meta": {
+      "page": 1,
+      "pageSize": 6,
+      "total": 9,
+      "totalPages": 1
+    },
+    "filters": {
+      "cities": [
+        "Ilorin",
+        "Offa",
+        "Ogbomoso"
+      ],
+      "organisations": [
+        {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a43",
+          "name": "An-Nur Islamic Society"
+        },
+        {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+          "name": "Central Mosque, Offa"
+        },
+        {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+          "name": "Darul Aytam Orphan Home"
+        }
+      ]
+    }
+  },
+  "campaignDetails": [
+    {
+      "data": {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a01",
+        "slug": "ramadan-food-drive-offa",
+        "title": "Ramadan food drive",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+        "organisationName": "Central Mosque, Offa",
+        "city": "Offa",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/food-drive.jpg",
+        "status": "LIVE",
+        "targetAmount": 50000000,
+        "raisedAmount": 30000000,
+        "availableAmount": 20000000,
+        "purpose": "Food packs for 120 families in Offa for the last ten nights of Ramadan.",
+        "description": [
+          "Every year the mosque’s welfare committee prepares food packs for families who struggle during Ramadan. This year 120 families from the mosque’s community register are on the list, chosen with the ward heads.",
+          "Each pack holds rice, cooking oil, dates and sugar for a family of six. Packs are handed out after Jumu’ah on the last two Fridays of the month, and a witness from the community confirms each delivery."
+        ],
+        "publishedAt": "2026-10-10T09:00:00.000Z",
+        "endsAt": null,
+        "items": [
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c00",
+            "name": "Rice, 50 kg bags",
+            "quantity": 5,
+            "unitCost": 5600000,
+            "totalCost": 28000000,
+            "status": "DELIVERED",
+            "confirmation": {
+              "status": "CONFIRMED",
+              "witnessName": "Ustadh Ibrahim Yusuf",
+              "confirmedAt": "2026-10-14T15:30:00Z",
+              "comment": null
+            }
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c01",
+            "name": "Cooking oil, 25 L kegs",
+            "quantity": 4,
+            "unitCost": 3000000,
+            "totalCost": 12000000,
+            "status": "NEEDED",
+            "confirmation": null
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c02",
+            "name": "Dates and sugar packs",
+            "quantity": 40,
+            "unitCost": 250000,
+            "totalCost": 10000000,
+            "status": "NEEDED",
+            "confirmation": null
+          }
+        ],
+        "organisation": {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+          "name": "Central Mosque, Offa",
+          "city": "Offa",
+          "state": "Kwara",
+          "verifiedAt": "2026-09-04T10:00:00.000Z",
+          "campaignCount": 4,
+          "endedCount": 1,
+          "completedCount": 1
+        },
+        "expenses": [
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d00",
+            "description": "Rice, 5 bags of 50 kg",
+            "vendorName": "Musa & Sons Grains, Offa Main Market",
+            "amount": 27500000,
+            "spentAt": "2026-10-12T10:30:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c00",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e00",
+              "imageUrl": "/images/receipts/ramadan-food-drive-offa-1.svg",
+              "thumbnailUrl": "/images/receipts/ramadan-food-drive-offa-1.svg",
+              "uploadedAtServer": "2026-10-12T11:20:00.000Z"
+            }
+          },
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d01",
+            "description": "Transport of the rice to the mosque",
+            "vendorName": "Market loaders, Offa",
+            "amount": 500000,
+            "spentAt": "2026-10-12T12:00:00Z",
+            "itemId": null,
+            "receipt": null
+          }
+        ],
+        "evidence": [
+          {
+            "id": "4c3b2a19-0f8e-4d7c-8b6a-4c3b2a190f00",
+            "imageUrl": "/images/campaigns/food-drive.jpg",
+            "thumbnailUrl": "/images/campaigns/food-drive.jpg",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c00",
+            "expenseId": null,
+            "latitude": 8.14921,
+            "longitude": 4.72036,
+            "capturedAtClient": "2026-10-14T15:05:00Z",
+            "uploadedAtServer": "2026-10-14T15:42:00Z"
+          }
+        ],
+        "updates": [
+          {
+            "id": "3d2c1b0a-9f8e-4b7d-8c6b-3d2c1b0a9f00",
+            "body": "The rice has arrived at the mosque store. Packing starts after Asr on Thursday with the welfare committee, and Ustadh Ibrahim Yusuf has confirmed the delivery.",
+            "images": [
+              "/images/campaigns/food-drive.jpg"
+            ],
+            "postedAt": "2026-10-14T16:00:00Z"
+          },
+          {
+            "id": "3d2c1b0a-9f8e-4b7d-8c6b-3d2c1b0a9f01",
+            "body": "Thank you to everyone who has given. We are buying the rice first, at Offa Main Market on Monday. The oil and the date packs follow as the rest is raised.",
+            "images": [],
+            "postedAt": "2026-10-11T09:00:00Z"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a02",
+        "slug": "school-supplies-40-orphans",
+        "title": "School supplies for 40 orphans",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+        "organisationName": "Darul Aytam Orphan Home",
+        "city": "Ilorin",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/school-supplies.jpg",
+        "status": "LIVE",
+        "targetAmount": 120000000,
+        "raisedAmount": 112000000,
+        "availableAmount": 8000000,
+        "purpose": "Uniforms, books and bags so 40 children can start the new term ready to learn.",
+        "description": [
+          "The home looks after 40 children of school age. Many start each term without a uniform or enough exercise books.",
+          "Supplies are bought in one order from a local supplier and handed out at the home, with a witness present."
+        ],
+        "publishedAt": "2026-10-09T09:00:00.000Z",
+        "endsAt": null,
+        "items": [
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c10",
+            "name": "School uniforms",
+            "quantity": 40,
+            "unitCost": 1200000,
+            "totalCost": 48000000,
+            "status": "DELIVERED",
+            "confirmation": {
+              "status": "CONFIRMED",
+              "witnessName": "Alhaja Rukayat Adebayo",
+              "confirmedAt": "2026-10-13T11:00:00Z",
+              "comment": null
+            }
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c11",
+            "name": "Exercise books",
+            "quantity": 400,
+            "unitCost": 80000,
+            "totalCost": 32000000,
+            "status": "DELIVERED",
+            "confirmation": {
+              "status": "CONFIRMED",
+              "witnessName": "Alhaja Rukayat Adebayo",
+              "confirmedAt": "2026-10-13T11:05:00Z",
+              "comment": null
+            }
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c12",
+            "name": "School bags",
+            "quantity": 40,
+            "unitCost": 1000000,
+            "totalCost": 40000000,
+            "status": "DISPUTED",
+            "confirmation": {
+              "status": "DISPUTED",
+              "witnessName": "Alhaja Rukayat Adebayo",
+              "confirmedAt": "2026-10-15T10:20:00Z",
+              "comment": "Only 24 of the 30 bags bought so far reached the home. I have asked the organisation to show where the other 6 are."
+            }
+          }
+        ],
+        "organisation": {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+          "name": "Darul Aytam Orphan Home",
+          "city": "Ilorin",
+          "state": "Kwara",
+          "verifiedAt": "2026-09-12T10:00:00.000Z",
+          "campaignCount": 3,
+          "endedCount": 1,
+          "completedCount": 1
+        },
+        "expenses": [
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d10",
+            "description": "School bags, first 30",
+            "vendorName": "Oja-Oba bag sellers, Ilorin",
+            "amount": 30000000,
+            "spentAt": "2026-10-11T09:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c12",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e10",
+              "imageUrl": "/images/receipts/school-supplies-40-orphans-1.svg",
+              "thumbnailUrl": "/images/receipts/school-supplies-40-orphans-1.svg",
+              "uploadedAtServer": "2026-10-11T09:50:00.000Z"
+            }
+          },
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d11",
+            "description": "School uniforms for 40 children",
+            "vendorName": "Ilorin Uniform Makers",
+            "amount": 48000000,
+            "spentAt": "2026-10-08T10:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c10",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e11",
+              "imageUrl": "/images/receipts/school-supplies-40-orphans-2.svg",
+              "thumbnailUrl": "/images/receipts/school-supplies-40-orphans-2.svg",
+              "uploadedAtServer": "2026-10-08T10:50:00.000Z"
+            }
+          },
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d12",
+            "description": "Exercise books, 400",
+            "vendorName": "Kwara Stationers, Ilorin",
+            "amount": 32000000,
+            "spentAt": "2026-10-08T09:30:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c11",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e12",
+              "imageUrl": "/images/receipts/school-supplies-40-orphans-3.svg",
+              "thumbnailUrl": "/images/receipts/school-supplies-40-orphans-3.svg",
+              "uploadedAtServer": "2026-10-08T10:20:00.000Z"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "id": "4c3b2a19-0f8e-4d7c-8b6a-4c3b2a190f10",
+            "imageUrl": "/images/campaigns/school-supplies.jpg",
+            "thumbnailUrl": "/images/campaigns/school-supplies.jpg",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c10",
+            "expenseId": null,
+            "latitude": 8.49664,
+            "longitude": 4.54214,
+            "capturedAtClient": "2026-10-13T10:49:30Z",
+            "uploadedAtServer": "2026-10-13T10:49:50Z"
+          }
+        ],
+        "updates": [
+          {
+            "id": "3d2c1b0a-9f8e-4b7d-8c6b-3d2c1b0a9f10",
+            "body": "Our witness found 6 of the first 30 school bags missing on delivery. We are checking with the seller and will post what we find here. No more bags will be bought until this is settled.",
+            "images": [],
+            "postedAt": "2026-10-15T14:00:00Z"
+          },
+          {
+            "id": "3d2c1b0a-9f8e-4b7d-8c6b-3d2c1b0a9f11",
+            "body": "Uniforms and exercise books were handed out at the home on Tuesday.",
+            "images": [
+              "/images/campaigns/school-supplies.jpg"
+            ],
+            "postedAt": "2026-10-13T12:00:00Z"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a04",
+        "slug": "eid-clothes-30-children",
+        "title": "Eid clothes for 30 children",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+        "organisationName": "Central Mosque, Offa",
+        "city": "Offa",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/eid-clothes.jpg",
+        "status": "LIVE",
+        "targetAmount": 40000000,
+        "raisedAmount": 38000000,
+        "availableAmount": 0,
+        "purpose": "New outfits and shoes for 30 children from families the mosque supports.",
+        "description": [
+          "The mosque’s welfare committee has a list of 30 children who would otherwise go without new clothes for Eid."
+        ],
+        "publishedAt": "2026-10-08T09:00:00.000Z",
+        "endsAt": null,
+        "items": [
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c20",
+            "name": "Eid outfits",
+            "quantity": 30,
+            "unitCost": 1000000,
+            "totalCost": 30000000,
+            "status": "PURCHASED",
+            "confirmation": null
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c21",
+            "name": "Shoes",
+            "quantity": 20,
+            "unitCost": 500000,
+            "totalCost": 10000000,
+            "status": "NEEDED",
+            "confirmation": null
+          }
+        ],
+        "organisation": {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+          "name": "Central Mosque, Offa",
+          "city": "Offa",
+          "state": "Kwara",
+          "verifiedAt": "2026-09-04T10:00:00.000Z",
+          "campaignCount": 4,
+          "endedCount": 1,
+          "completedCount": 1
+        },
+        "expenses": [
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d20",
+            "description": "Eid outfits for 30 children",
+            "vendorName": "Offa Tailors' Cooperative",
+            "amount": 30000000,
+            "spentAt": "2026-10-13T11:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c20",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e20",
+              "imageUrl": "/images/receipts/eid-clothes-30-children-1.svg",
+              "thumbnailUrl": "/images/receipts/eid-clothes-30-children-1.svg",
+              "uploadedAtServer": "2026-10-13T11:50:00.000Z"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "id": "4c3b2a19-0f8e-4d7c-8b6a-4c3b2a190f20",
+            "imageUrl": "/images/campaigns/eid-clothes.jpg",
+            "thumbnailUrl": "/images/campaigns/eid-clothes.jpg",
+            "itemId": null,
+            "expenseId": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d20",
+            "latitude": null,
+            "longitude": null,
+            "capturedAtClient": "2026-10-13T12:00:00Z",
+            "uploadedAtServer": "2026-10-13T12:30:00Z"
+          }
+        ],
+        "updates": []
+      }
+    },
+    {
+      "data": {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a05",
+        "slug": "quran-learning-materials",
+        "title": "Qur’an learning materials for the evening class",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+        "organisationName": "Darul Aytam Orphan Home",
+        "city": "Ilorin",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/quran-class.jpg",
+        "status": "LIVE",
+        "targetAmount": 30000000,
+        "raisedAmount": 6000000,
+        "availableAmount": 24000000,
+        "purpose": "Copies of the Qur’an and writing boards for the evening class.",
+        "description": [
+          "The evening class has grown to 30 children and shares a handful of copies. Each child should have their own."
+        ],
+        "publishedAt": "2026-10-07T09:00:00.000Z",
+        "endsAt": null,
+        "items": [
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c30",
+            "name": "Copies of the Qur’an",
+            "quantity": 30,
+            "unitCost": 600000,
+            "totalCost": 18000000,
+            "status": "NEEDED",
+            "confirmation": null
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c31",
+            "name": "Writing boards",
+            "quantity": 12,
+            "unitCost": 1000000,
+            "totalCost": 12000000,
+            "status": "NEEDED",
+            "confirmation": null
+          }
+        ],
+        "organisation": {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+          "name": "Darul Aytam Orphan Home",
+          "city": "Ilorin",
+          "state": "Kwara",
+          "verifiedAt": "2026-09-12T10:00:00.000Z",
+          "campaignCount": 3,
+          "endedCount": 1,
+          "completedCount": 1
+        },
+        "expenses": [],
+        "evidence": [],
+        "updates": []
+      }
+    },
+    {
+      "data": {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a03",
+        "slug": "borehole-islamiyya-school",
+        "title": "Borehole for the Islamiyya school",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a43",
+        "organisationName": "An-Nur Islamic Society",
+        "city": "Ogbomoso",
+        "state": "Oyo",
+        "coverImageUrl": "/images/campaigns/borehole.jpg",
+        "status": "FUNDED",
+        "targetAmount": 85000000,
+        "raisedAmount": 85000000,
+        "availableAmount": 0,
+        "purpose": "A borehole so the Islamiyya school and its neighbours have clean water on site.",
+        "description": [
+          "Pupils and teachers walk to a shared well that runs low in the dry season. A borehole on the school grounds would serve about 300 pupils and the families nearby."
+        ],
+        "publishedAt": "2026-10-06T09:00:00.000Z",
+        "endsAt": null,
+        "items": [
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c40",
+            "name": "Drilling and casing",
+            "quantity": 1,
+            "unitCost": 45000000,
+            "totalCost": 45000000,
+            "status": "DELIVERED",
+            "confirmation": {
+              "status": "CONFIRMED",
+              "witnessName": "Mallam Sulaiman Oyewole",
+              "confirmedAt": "2026-10-12T12:00:00Z",
+              "comment": null
+            }
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c41",
+            "name": "Submersible pump",
+            "quantity": 1,
+            "unitCost": 25000000,
+            "totalCost": 25000000,
+            "status": "PURCHASED",
+            "confirmation": null
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c42",
+            "name": "Tank and stand",
+            "quantity": 1,
+            "unitCost": 15000000,
+            "totalCost": 15000000,
+            "status": "PURCHASED",
+            "confirmation": null
+          }
+        ],
+        "organisation": {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a43",
+          "name": "An-Nur Islamic Society",
+          "city": "Ogbomoso",
+          "state": "Oyo",
+          "verifiedAt": "2026-09-20T10:00:00.000Z",
+          "campaignCount": 2,
+          "endedCount": 1,
+          "completedCount": 0
+        },
+        "expenses": [
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d40",
+            "description": "Submersible pump",
+            "vendorName": "Ogbomoso Pumps and Tanks",
+            "amount": 25000000,
+            "spentAt": "2026-10-12T08:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c41",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e40",
+              "imageUrl": "/images/receipts/borehole-islamiyya-school-1.svg",
+              "thumbnailUrl": "/images/receipts/borehole-islamiyya-school-1.svg",
+              "uploadedAtServer": "2026-10-12T08:50:00.000Z"
+            }
+          },
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d41",
+            "description": "Drilling and casing",
+            "vendorName": "Oyewole Drilling Services",
+            "amount": 45000000,
+            "spentAt": "2026-10-06T08:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c40",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e41",
+              "imageUrl": "/images/receipts/borehole-islamiyya-school-2.svg",
+              "thumbnailUrl": "/images/receipts/borehole-islamiyya-school-2.svg",
+              "uploadedAtServer": "2026-10-06T08:50:00.000Z"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "id": "4c3b2a19-0f8e-4d7c-8b6a-4c3b2a190f40",
+            "imageUrl": "/images/campaigns/borehole.jpg",
+            "thumbnailUrl": "/images/campaigns/borehole.jpg",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c40",
+            "expenseId": null,
+            "latitude": 8.13302,
+            "longitude": 4.24086,
+            "capturedAtClient": "2026-10-12T11:40:00Z",
+            "uploadedAtServer": "2026-10-12T11:41:10Z"
+          }
+        ],
+        "updates": [
+          {
+            "id": "3d2c1b0a-9f8e-4b7d-8c6b-3d2c1b0a9f40",
+            "body": "Drilling is finished and the casing is in. The pump goes in next week.",
+            "images": [
+              "/images/campaigns/borehole.jpg"
+            ],
+            "postedAt": "2026-10-12T13:00:00Z"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a10",
+        "slug": "prayer-mats-womens-section",
+        "title": "Prayer mats for the women’s section",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+        "organisationName": "Central Mosque, Offa",
+        "city": "Offa",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/prayer-mats.jpg",
+        "status": "FUNDED",
+        "targetAmount": 27000000,
+        "raisedAmount": 27000000,
+        "availableAmount": 0,
+        "purpose": "New prayer mats for the women’s section, which has outgrown its old ones.",
+        "description": [
+          "The women’s section fills up every Jumu’ah and the old mats are worn through. The new mats are bought from a weaver in Offa."
+        ],
+        "publishedAt": "2026-10-05T09:00:00.000Z",
+        "endsAt": null,
+        "items": [
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c50",
+            "name": "Prayer mats",
+            "quantity": 45,
+            "unitCost": 500000,
+            "totalCost": 22500000,
+            "status": "DELIVERED",
+            "confirmation": {
+              "status": "CONFIRMED",
+              "witnessName": "Ustadh Ibrahim Yusuf",
+              "confirmedAt": "2026-10-09T14:00:00Z",
+              "comment": null
+            }
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c51",
+            "name": "Underlay rolls",
+            "quantity": 3,
+            "unitCost": 1500000,
+            "totalCost": 4500000,
+            "status": "DELIVERED",
+            "confirmation": {
+              "status": "CONFIRMED",
+              "witnessName": "Ustadh Ibrahim Yusuf",
+              "confirmedAt": "2026-10-09T14:05:00Z",
+              "comment": null
+            }
+          }
+        ],
+        "organisation": {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+          "name": "Central Mosque, Offa",
+          "city": "Offa",
+          "state": "Kwara",
+          "verifiedAt": "2026-09-04T10:00:00.000Z",
+          "campaignCount": 4,
+          "endedCount": 1,
+          "completedCount": 1
+        },
+        "expenses": [
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d50",
+            "description": "Underlay rolls, 3",
+            "vendorName": "Offa Main Market",
+            "amount": 4500000,
+            "spentAt": "2026-10-08T12:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c51",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e50",
+              "imageUrl": "/images/receipts/prayer-mats-womens-section-1.svg",
+              "thumbnailUrl": "/images/receipts/prayer-mats-womens-section-1.svg",
+              "uploadedAtServer": "2026-10-08T12:50:00.000Z"
+            }
+          },
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d51",
+            "description": "Prayer mats, 45",
+            "vendorName": "Mama Kudi's weaving, Offa",
+            "amount": 22500000,
+            "spentAt": "2026-10-08T11:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c50",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e51",
+              "imageUrl": "/images/receipts/prayer-mats-womens-section-2.svg",
+              "thumbnailUrl": "/images/receipts/prayer-mats-womens-section-2.svg",
+              "uploadedAtServer": "2026-10-08T11:50:00.000Z"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "id": "4c3b2a19-0f8e-4d7c-8b6a-4c3b2a190f50",
+            "imageUrl": "/images/campaigns/prayer-mats.jpg",
+            "thumbnailUrl": "/images/campaigns/prayer-mats.jpg",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c50",
+            "expenseId": null,
+            "latitude": 8.14735,
+            "longitude": 4.71912,
+            "capturedAtClient": null,
+            "uploadedAtServer": "2026-10-09T13:30:00Z"
+          }
+        ],
+        "updates": []
+      }
+    },
+    {
+      "data": {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a06",
+        "slug": "mosque-roof-repair-oke-ode",
+        "title": "Repairing the storm-damaged roof of the Oke-Ode community mosque and its Qur’an school",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a43",
+        "organisationName": "An-Nur Islamic Society",
+        "city": "Ogbomoso",
+        "state": "Oyo",
+        "coverImageUrl": "/images/campaigns/roof-repair.jpg",
+        "status": "CLOSED",
+        "targetAmount": 90000000,
+        "raisedAmount": 61000000,
+        "availableAmount": 0,
+        "purpose": "Repairing the storm-damaged roof so prayers and classes can continue in the rainy season.",
+        "description": [
+          "A storm tore sheets off the roof of the community mosque and its Qur’an school. The campaign closed below its target; the funds raised are used for the repairs listed below."
+        ],
+        "publishedAt": "2026-10-04T09:00:00.000Z",
+        "endsAt": null,
+        "items": [
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c60",
+            "name": "Roofing sheets",
+            "quantity": 60,
+            "unitCost": 900000,
+            "totalCost": 54000000,
+            "status": "DELIVERED",
+            "confirmation": null
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c61",
+            "name": "Timber and labour",
+            "quantity": 1,
+            "unitCost": 36000000,
+            "totalCost": 36000000,
+            "status": "NEEDED",
+            "confirmation": null
+          }
+        ],
+        "organisation": {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a43",
+          "name": "An-Nur Islamic Society",
+          "city": "Ogbomoso",
+          "state": "Oyo",
+          "verifiedAt": "2026-09-20T10:00:00.000Z",
+          "campaignCount": 2,
+          "endedCount": 1,
+          "completedCount": 0
+        },
+        "expenses": [
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d60",
+            "description": "Roofing sheets, 60",
+            "vendorName": "Ogbomoso Roofing Supplies",
+            "amount": 54000000,
+            "spentAt": "2026-10-07T10:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c60",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e60",
+              "imageUrl": "/images/receipts/mosque-roof-repair-oke-ode-1.svg",
+              "thumbnailUrl": "/images/receipts/mosque-roof-repair-oke-ode-1.svg",
+              "uploadedAtServer": "2026-10-07T10:50:00.000Z"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "id": "4c3b2a19-0f8e-4d7c-8b6a-4c3b2a190f60",
+            "imageUrl": "/images/campaigns/roof-repair.jpg",
+            "thumbnailUrl": "/images/campaigns/roof-repair.jpg",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c60",
+            "expenseId": null,
+            "latitude": 8.1247,
+            "longitude": 4.254,
+            "capturedAtClient": null,
+            "uploadedAtServer": "2026-10-08T09:00:00Z"
+          }
+        ],
+        "updates": []
+      }
+    },
+    {
+      "data": {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a07",
+        "slug": "clinic-medicines-ilorin",
+        "title": "Medicines for the community clinic",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+        "organisationName": "Darul Aytam Orphan Home",
+        "city": "Ilorin",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/clinic-medicines.jpg",
+        "status": "COMPLETED",
+        "targetAmount": 25000000,
+        "raisedAmount": 25000000,
+        "availableAmount": 0,
+        "purpose": "Basic medicines for the community clinic that serves the home’s neighbourhood.",
+        "description": [
+          "The clinic ran short of basic medicines. Everything below was bought, delivered and confirmed by a witness."
+        ],
+        "publishedAt": "2026-10-03T09:00:00.000Z",
+        "endsAt": null,
+        "items": [
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c70",
+            "name": "Antimalarial courses",
+            "quantity": 100,
+            "unitCost": 150000,
+            "totalCost": 15000000,
+            "status": "DELIVERED",
+            "confirmation": {
+              "status": "CONFIRMED",
+              "witnessName": "Alhaja Rukayat Adebayo",
+              "confirmedAt": "2026-09-28T09:40:00Z",
+              "comment": null
+            }
+          },
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c71",
+            "name": "ORS and zinc packs",
+            "quantity": 100,
+            "unitCost": 100000,
+            "totalCost": 10000000,
+            "status": "DELIVERED",
+            "confirmation": {
+              "status": "CONFIRMED",
+              "witnessName": "Alhaja Rukayat Adebayo",
+              "confirmedAt": "2026-09-28T09:45:00Z",
+              "comment": null
+            }
+          }
+        ],
+        "organisation": {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+          "name": "Darul Aytam Orphan Home",
+          "city": "Ilorin",
+          "state": "Kwara",
+          "verifiedAt": "2026-09-12T10:00:00.000Z",
+          "campaignCount": 3,
+          "endedCount": 1,
+          "completedCount": 1
+        },
+        "expenses": [
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d70",
+            "description": "ORS and zinc packs, 100",
+            "vendorName": "Unity Pharmacy, Ilorin",
+            "amount": 10000000,
+            "spentAt": "2026-09-25T10:15:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c71",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e70",
+              "imageUrl": "/images/receipts/clinic-medicines-ilorin-1.svg",
+              "thumbnailUrl": "/images/receipts/clinic-medicines-ilorin-1.svg",
+              "uploadedAtServer": "2026-09-25T11:05:00.000Z"
+            }
+          },
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d71",
+            "description": "Antimalarial courses, 100",
+            "vendorName": "Unity Pharmacy, Ilorin",
+            "amount": 15000000,
+            "spentAt": "2026-09-25T10:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c70",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e71",
+              "imageUrl": "/images/receipts/clinic-medicines-ilorin-2.svg",
+              "thumbnailUrl": "/images/receipts/clinic-medicines-ilorin-2.svg",
+              "uploadedAtServer": "2026-09-25T10:50:00.000Z"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "id": "4c3b2a19-0f8e-4d7c-8b6a-4c3b2a190f70",
+            "imageUrl": "/images/campaigns/clinic-medicines.jpg",
+            "thumbnailUrl": "/images/campaigns/clinic-medicines.jpg",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c70",
+            "expenseId": null,
+            "latitude": 8.48124,
+            "longitude": 4.55301,
+            "capturedAtClient": "2026-09-27T16:10:00Z",
+            "uploadedAtServer": "2026-09-28T08:05:00Z"
+          }
+        ],
+        "updates": [
+          {
+            "id": "3d2c1b0a-9f8e-4b7d-8c6b-3d2c1b0a9f70",
+            "body": "All the medicines are at the clinic and the witness has confirmed them. Thank you for making this possible.",
+            "images": [
+              "/images/campaigns/clinic-medicines.jpg"
+            ],
+            "postedAt": "2026-09-28T10:00:00Z"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a08",
+        "slug": "winter-blankets-offa",
+        "title": "Blankets for the harmattan season",
+        "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+        "organisationName": "Central Mosque, Offa",
+        "city": "Offa",
+        "state": "Kwara",
+        "coverImageUrl": "/images/campaigns/blankets.jpg",
+        "status": "COMPLETED",
+        "targetAmount": 18000000,
+        "raisedAmount": 18000000,
+        "availableAmount": 0,
+        "purpose": "Blankets for 60 families through the harmattan season.",
+        "description": [
+          "Nights get cold in Offa during the harmattan. Blankets were handed out after Jumu’ah and confirmed by a witness."
+        ],
+        "publishedAt": "2026-10-02T09:00:00.000Z",
+        "endsAt": null,
+        "items": [
+          {
+            "id": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c80",
+            "name": "Blankets",
+            "quantity": 60,
+            "unitCost": 300000,
+            "totalCost": 18000000,
+            "status": "DELIVERED",
+            "confirmation": {
+              "status": "CONFIRMED",
+              "witnessName": "Ustadh Ibrahim Yusuf",
+              "confirmedAt": "2026-09-20T13:15:00Z",
+              "comment": null
+            }
+          }
+        ],
+        "organisation": {
+          "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+          "name": "Central Mosque, Offa",
+          "city": "Offa",
+          "state": "Kwara",
+          "verifiedAt": "2026-09-04T10:00:00.000Z",
+          "campaignCount": 4,
+          "endedCount": 1,
+          "completedCount": 1
+        },
+        "expenses": [
+          {
+            "id": "6a5f4e3d-2c1b-4a09-8e7d-6c5b4a3e2d80",
+            "description": "Blankets, 60",
+            "vendorName": "Offa Main Market",
+            "amount": 18000000,
+            "spentAt": "2026-09-18T10:00:00Z",
+            "itemId": "9c4d1e7a-2b3f-4a50-8d61-0e1f2a3b4c80",
+            "receipt": {
+              "id": "5b4a3c2d-1e0f-4a98-9d7c-5b4a3c2d1e80",
+              "imageUrl": "/images/receipts/winter-blankets-offa-1.svg",
+              "thumbnailUrl": "/images/receipts/winter-blankets-offa-1.svg",
+              "uploadedAtServer": "2026-09-18T10:50:00.000Z"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "id": "4c3b2a19-0f8e-4d7c-8b6a-4c3b2a190f80",
+            "imageUrl": "/images/campaigns/blankets.jpg",
+            "thumbnailUrl": "/images/campaigns/blankets.jpg",
+            "itemId": null,
+            "expenseId": null,
+            "latitude": 8.14921,
+            "longitude": 4.72036,
+            "capturedAtClient": null,
+            "uploadedAtServer": "2026-09-20T12:50:00Z"
+          }
+        ],
+        "updates": [
+          {
+            "id": "3d2c1b0a-9f8e-4b7d-8c6b-3d2c1b0a9f80",
+            "body": "The blankets were handed out after Jumu’ah to all 60 families.",
+            "images": [
+              "/images/campaigns/blankets.jpg"
+            ],
+            "postedAt": "2026-09-20T14:00:00Z"
+          }
+        ]
+      }
+    }
+  ],
+  "organisationProfiles": [
+    {
+      "data": {
+        "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+        "name": "Central Mosque, Offa",
+        "city": "Offa",
+        "state": "Kwara",
+        "verifiedAt": "2026-09-04T10:00:00.000Z",
+        "campaignCount": 4,
+        "endedCount": 1,
+        "completedCount": 1,
+        "address": "12 Station Road, Offa, Kwara State",
+        "coverImageUrl": "/images/organisations/central-mosque-offa.jpg",
+        "raisedAmount": 113000000,
+        "campaigns": [
+          {
+            "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a01",
+            "slug": "ramadan-food-drive-offa",
+            "title": "Ramadan food drive",
+            "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+            "organisationName": "Central Mosque, Offa",
+            "city": "Offa",
+            "state": "Kwara",
+            "coverImageUrl": "/images/campaigns/food-drive.jpg",
+            "status": "LIVE",
+            "targetAmount": 50000000,
+            "raisedAmount": 30000000,
+            "availableAmount": 20000000
+          },
+          {
+            "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a04",
+            "slug": "eid-clothes-30-children",
+            "title": "Eid clothes for 30 children",
+            "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+            "organisationName": "Central Mosque, Offa",
+            "city": "Offa",
+            "state": "Kwara",
+            "coverImageUrl": "/images/campaigns/eid-clothes.jpg",
+            "status": "LIVE",
+            "targetAmount": 40000000,
+            "raisedAmount": 38000000,
+            "availableAmount": 0
+          },
+          {
+            "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a10",
+            "slug": "prayer-mats-womens-section",
+            "title": "Prayer mats for the women’s section",
+            "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+            "organisationName": "Central Mosque, Offa",
+            "city": "Offa",
+            "state": "Kwara",
+            "coverImageUrl": "/images/campaigns/prayer-mats.jpg",
+            "status": "FUNDED",
+            "targetAmount": 27000000,
+            "raisedAmount": 27000000,
+            "availableAmount": 0
+          },
+          {
+            "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a08",
+            "slug": "winter-blankets-offa",
+            "title": "Blankets for the harmattan season",
+            "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+            "organisationName": "Central Mosque, Offa",
+            "city": "Offa",
+            "state": "Kwara",
+            "coverImageUrl": "/images/campaigns/blankets.jpg",
+            "status": "COMPLETED",
+            "targetAmount": 18000000,
+            "raisedAmount": 18000000,
+            "availableAmount": 0
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+        "name": "Darul Aytam Orphan Home",
+        "city": "Ilorin",
+        "state": "Kwara",
+        "verifiedAt": "2026-09-12T10:00:00.000Z",
+        "campaignCount": 3,
+        "endedCount": 1,
+        "completedCount": 1,
+        "address": "5 Unity Close, Ilorin, Kwara State",
+        "coverImageUrl": "/images/organisations/darul-aytam-ilorin.jpg",
+        "raisedAmount": 143000000,
+        "campaigns": [
+          {
+            "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a02",
+            "slug": "school-supplies-40-orphans",
+            "title": "School supplies for 40 orphans",
+            "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+            "organisationName": "Darul Aytam Orphan Home",
+            "city": "Ilorin",
+            "state": "Kwara",
+            "coverImageUrl": "/images/campaigns/school-supplies.jpg",
+            "status": "LIVE",
+            "targetAmount": 120000000,
+            "raisedAmount": 112000000,
+            "availableAmount": 8000000
+          },
+          {
+            "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a05",
+            "slug": "quran-learning-materials",
+            "title": "Qur’an learning materials for the evening class",
+            "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+            "organisationName": "Darul Aytam Orphan Home",
+            "city": "Ilorin",
+            "state": "Kwara",
+            "coverImageUrl": "/images/campaigns/quran-class.jpg",
+            "status": "LIVE",
+            "targetAmount": 30000000,
+            "raisedAmount": 6000000,
+            "availableAmount": 24000000
+          },
+          {
+            "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a07",
+            "slug": "clinic-medicines-ilorin",
+            "title": "Medicines for the community clinic",
+            "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a42",
+            "organisationName": "Darul Aytam Orphan Home",
+            "city": "Ilorin",
+            "state": "Kwara",
+            "coverImageUrl": "/images/campaigns/clinic-medicines.jpg",
+            "status": "COMPLETED",
+            "targetAmount": 25000000,
+            "raisedAmount": 25000000,
+            "availableAmount": 0
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a43",
+        "name": "An-Nur Islamic Society",
+        "city": "Ogbomoso",
+        "state": "Oyo",
+        "verifiedAt": "2026-09-20T10:00:00.000Z",
+        "campaignCount": 2,
+        "endedCount": 1,
+        "completedCount": 0,
+        "address": "21 Oke-Ode Road, Ogbomoso, Oyo State",
+        "coverImageUrl": "/images/organisations/an-nur-ogbomoso.jpg",
+        "raisedAmount": 146000000,
+        "campaigns": [
+          {
+            "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a03",
+            "slug": "borehole-islamiyya-school",
+            "title": "Borehole for the Islamiyya school",
+            "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a43",
+            "organisationName": "An-Nur Islamic Society",
+            "city": "Ogbomoso",
+            "state": "Oyo",
+            "coverImageUrl": "/images/campaigns/borehole.jpg",
+            "status": "FUNDED",
+            "targetAmount": 85000000,
+            "raisedAmount": 85000000,
+            "availableAmount": 0
+          },
+          {
+            "id": "7b3e2a8c-1f4d-4c1e-9a52-3d6f0b8e1a06",
+            "slug": "mosque-roof-repair-oke-ode",
+            "title": "Repairing the storm-damaged roof of the Oke-Ode community mosque and its Qur’an school",
+            "organisationId": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a43",
+            "organisationName": "An-Nur Islamic Society",
+            "city": "Ogbomoso",
+            "state": "Oyo",
+            "coverImageUrl": "/images/campaigns/roof-repair.jpg",
+            "status": "CLOSED",
+            "targetAmount": 90000000,
+            "raisedAmount": 61000000,
+            "availableAmount": 0
+          }
+        ]
+      }
+    }
+  ],
+  "currentUsers": [
+    {
+      "data": {
+        "id": "5d1c6b0e-6a40-4f8e-9e3a-2b7f1c9d0a11",
+        "name": "Aisha Bello",
+        "email": "aisha@example.org",
+        "role": "ORG_ADMIN",
+        "organisations": [
+          {
+            "id": "8f2a1c3d-4b5e-4f60-8a7b-9c0d1e2f3a41",
+            "name": "Central Mosque, Offa"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "5d1c6b0e-6a40-4f8e-9e3a-2b7f1c9d0a12",
+        "name": "Ustadh Ibrahim Yusuf",
+        "email": "ibrahim@example.org",
+        "role": "WITNESS",
+        "organisations": []
+      }
+    },
+    {
+      "data": {
+        "id": "5d1c6b0e-6a40-4f8e-9e3a-2b7f1c9d0a13",
+        "name": "Amanah Admin",
+        "email": "admin@example.org",
+        "role": "PLATFORM_ADMIN",
+        "organisations": []
+      }
+    }
+  ]
+}
