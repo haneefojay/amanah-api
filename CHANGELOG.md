@@ -16,6 +16,10 @@ Sections per release: **Added**, **Changed**, **Fixed**, **Removed**, **Security
 - **API contract (B0.3):** Pydantic models for every request and response (`app/schemas/`), all 28 spec routes as `501 NOT_IMPLEMENTED` stubs tied to their roadmap item (`x-roadmap`), the session-cookie security scheme on organisation, witness and admin routes, an error-code catalogue published as `info.x-error-codes`, and the generated `openapi.json` (`scripts/export_openapi.py`, with `--check`). Tests fail if the file is stale, and validate the frontend mock payloads against the models.
 - **CI:** GitHub Actions run Ruff, mypy (strict), migrations and pytest against a PostgreSQL service, plus a Docker build.
 
+### Changed
+
+- **Python 3.14 and FastAPI 0.162** (owner decision, 2026-11-01): `.python-version`, the Dockerfile, `requires-python`, Ruff and mypy targets move from 3.12 to 3.14; the FastAPI floor is now 0.162.
+
 ### Decisions
 
 - **ADR-004 accepted:** FastAPI on PostgreSQL (SQLAlchemy, Alembic, pytest), in this separate repository.
