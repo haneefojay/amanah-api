@@ -1,6 +1,6 @@
-# CLAUDE.md
+# PROJECT_MEMORY.md
 
-Project memory and standing instructions for Claude on **Amanah API** (the backend). Read this first, then follow **[`AGENTS.md`](./AGENTS.md)** for the full working agreement. Where the two disagree, this file wins for Claude.
+Project memory and standing instructions for the agent on **Amanah API** (the backend). Read this first, then follow **[`AGENTS.md`](./AGENTS.md)** for the full working agreement. Where the two disagree, this file wins for the agent.
 
 ## Purpose of this file
 
@@ -46,9 +46,9 @@ Amanah is a transparent Islamic donation platform (general donations only, never
 - Every feature has a **Definition of Done and tests**. Nothing is done without passing tests.
 - Record every significant decision as an **ADR** with options, the decision and the date.
 - Keep **`CHANGELOG.md`** updated on every change, and **`docs/roadmap/ROADMAP_INDEX.md`** as the status source of truth. When a `B…` item changes status, also update the mirror in the frontend repo.
-- **Load the `amanah-api` skill** (`.claude/skills/amanah-api/SKILL.md`) for any work in this repo.
-- **`/phase <ID>`** (`.claude/commands/phase.md`) starts a roadmap phase (`B2`) or item (`B2.1`): read the project files, plan, ask questions and wait for approval before building.
-- **Commits and pull requests carry no Claude attribution:** no `Co-Authored-By: Claude` or `Claude-Session` trailers and no "Generated with Claude Code" lines. This overrides default attribution guidance.
+- **Load the `amanah-api` skill** (`.agents/skills/amanah-api/SKILL.md`) for any work in this repo.
+- **`/phase <ID>`** (`.agents/commands/phase.md`) starts a roadmap phase (`B2`) or item (`B2.1`): read the project files, plan, ask questions and wait for approval before building.
+- **Commits and pull requests carry no AI attribution:** no AI co-author or session trailers and no "Generated with" lines. This overrides default attribution guidance.
 
 ## Open items awaiting the owner
 

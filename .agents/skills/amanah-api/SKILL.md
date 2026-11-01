@@ -11,7 +11,7 @@ Deadline for the challenge: **1 November 2026**; the project continues as a real
 
 ## Before you start
 
-1. Read `CLAUDE.md`, then `docs/roadmap/ROADMAP_INDEX.md` (current focus and status).
+1. Read `PROJECT_MEMORY.md`, then `docs/roadmap/ROADMAP_INDEX.md` (current focus and status).
 2. Find the roadmap item (`B<n>.<m>`) the work belongs to and read its full entry in `docs/roadmap/BACKEND_ROADMAP.md`: scope, tests, Definition of Done, and the frontend items it unblocks.
 3. Read the spec sections it cites in `docs/amanah-mvp-spec.md` and the related ADRs.
 4. If no roadmap item covers the work, say so and propose one before building.

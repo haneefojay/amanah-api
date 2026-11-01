@@ -9,5 +9,5 @@ __pycache__
 !.env.example
 tests
 docs
-.claude
+.agents
 .github

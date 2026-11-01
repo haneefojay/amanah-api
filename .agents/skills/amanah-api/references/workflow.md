@@ -28,7 +28,7 @@ Write one for any decision with lasting impact: a library, an architecture patte
 
 Every change gets an entry under `## [Unreleased]`, in the right section: Added, Changed, Fixed, Removed, Security, Decisions, Docs. Reference roadmap IDs and ADRs. One line per change, past tense, specific ("Added donate panel states (F4.1)", not "updates").
 
-## 4. CLAUDE.md
+## 4. PROJECT_MEMORY.md
 
 Update it in the same change when a durable fact changes (stack, conventions, owner instructions, open items). Keep it short; history goes to the changelog.
 
@@ -36,7 +36,7 @@ Update it in the same change when a durable fact changes (stack, conventions, ow
 
 - Branch per roadmap item: `feat/B6.1-checkout-reservations`, `fix/B7.3-webhook-replay`, `docs/…`, `chore/…`.
 - Conventional commit subjects: `feat(B6.1): checkout with reservations`, `fix:`, `docs:`, `test:`, `chore:`, `refactor:`.
-- **No AI attribution**: no `Co-Authored-By` lines for AI, no `Claude-Session`, no "Generated with …" in commits or PR descriptions. The author is the repository's configured git user (Ojutalayo Haneef Abiola).
+- **No AI attribution**: no `Co-Authored-By` lines for AI, no session trailers, no "Generated with …" in commits or PR descriptions. The author is the repository's configured git user (Ojutalayo Haneef Abiola).
 - Never force-push or rewrite pushed history without the user's explicit request.
 - Remote: `https://github.com/haneefojay/amanah-api` (branch `main`). CI must be green once B0.2 adds it.
 

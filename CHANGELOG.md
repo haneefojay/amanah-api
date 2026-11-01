@@ -30,4 +30,4 @@ Sections per release: **Added**, **Changed**, **Fixed**, **Removed**, **Security
 ### Docs
 
 - `docs/api-contract.md` describes the contract conventions.
-- Repository created with the project overview, `AGENTS.md`, `CLAUDE.md`, the MVP specification, the backend roadmap (B0 to B12) refined with the chosen tools, the roadmap index (B0.1 done), ADR-003, ADR-004 and ADR-011 to ADR-013, an architecture note, the `amanah-api` Claude skill and the `/phase` command.
+- Repository created with the project overview, `AGENTS.md`, `PROJECT_MEMORY.md`, the MVP specification, the backend roadmap (B0 to B12) refined with the chosen tools, the roadmap index (B0.1 done), ADR-003, ADR-004 and ADR-011 to ADR-013, an architecture note, the `amanah-api` the agent skill and the `/phase` command.

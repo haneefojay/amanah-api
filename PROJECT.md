@@ -70,9 +70,9 @@ See [`docs/architecture.md`](docs/architecture.md).
 | `docs/roadmap/`               | Backend roadmap and **ROADMAP_INDEX.md** (status)                     |
 | `docs/decisions/`             | Architecture Decision Records                                         |
 | `docs/architecture.md`        | How the pieces fit together; contract, auth, storage, deployment      |
-| `AGENTS.md` / `CLAUDE.md`     | How any AI agent or contributor works here / Claude's project memory  |
+| `AGENTS.md` / `PROJECT_MEMORY.md`     | How any AI agent or contributor works here / the agent's project memory  |
 | `CHANGELOG.md`                | Every notable change                                                  |
-| `.claude/skills/amanah-api/`  | Project skill for Claude                                              |
+| `.agents/skills/amanah-api/`  | Project skill for the agent                                              |
 
 ## Status
 
