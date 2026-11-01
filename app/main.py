@@ -8,6 +8,7 @@ import structlog
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
+from pydantic import BaseModel
 
 from app.api import admin, auth, health, org, public, witness
 from app.core.config import Settings, get_settings
@@ -16,6 +17,7 @@ from app.core.errors import register_error_handlers
 from app.core.logging import configure_logging
 from app.core.request_id import RequestIdMiddleware
 from app.db.session import create_engine, create_session_factory
+from app.schemas.org import EvidenceUpload
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -72,8 +74,21 @@ def build_openapi(app: FastAPI) -> dict[str, Any]:
             code: {"status": item.status, "meaning": item.meaning}
             for code, item in sorted(CATALOGUE.items())
         }
+        _register_form_models(schema, [EvidenceUpload])
         app.openapi_schema = schema
     return app.openapi_schema
+
+
+def _register_form_models(schema: dict[str, Any], models: list[type[BaseModel]]) -> None:
+    """Add models that only describe multipart forms, which FastAPI cannot discover itself."""
+    components = schema.setdefault("components", {}).setdefault("schemas", {})
+    for model in models:
+        generated = model.model_json_schema(
+            by_alias=True, ref_template="#/components/schemas/{model}"
+        )
+        for name, definition in generated.pop("$defs", {}).items():
+            components.setdefault(name, definition)
+        components[model.__name__] = generated
 
 
 def __getattr__(name: str) -> FastAPI:

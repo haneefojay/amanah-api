@@ -42,6 +42,30 @@ def test_committed_openapi_json_is_up_to_date() -> None:
     assert result.returncode == 0, result.stdout
 
 
+def test_every_ref_resolves(schema: dict[str, Any]) -> None:
+    refs: set[str] = set()
+
+    def walk(node: Any) -> None:
+        if isinstance(node, dict):
+            ref = node.get("$ref")
+            if isinstance(ref, str):
+                refs.add(ref)
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+
+    walk(schema)
+    known = set(schema["components"]["schemas"])
+    missing = {
+        r
+        for r in refs
+        if r.startswith("#/components/schemas/") and r.rsplit("/", 1)[1] not in known
+    }
+    assert not missing, f"Unresolved schema references: {sorted(missing)}"
+
+
 def test_is_openapi_3_with_an_error_catalogue(schema: dict[str, Any]) -> None:
     assert schema["openapi"].startswith("3.")
     assert set(schema["info"]["x-error-codes"]) == set(CATALOGUE)
